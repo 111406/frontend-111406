@@ -1,12 +1,12 @@
 import React,{Component} from "react";
-import{Div0,Buttona,Selectcenter,Selectright,Selectall,Search}from'./style';
+import{Div0,Buttona,Selectcenter,Selectright,Selectall,InputName,Search}from'./style';
 class SelectList extends Component{
     render(){
         const Aaa='./main'
         return (
             <Div0>
-                <Buttona href="./main2">
-                    全體
+                <Buttona href="./main">
+                    個人
                 </Buttona>
                 <Selectcenter>
                     <option>二頭肌</option>
@@ -27,18 +27,7 @@ class SelectList extends Component{
                     <option>90~95歲</option>
                     <option>95~100歲</option>
                 </Selectall>
-                <Selectall>
-                    <option>不限日期</option>
-                    <option>2022/04/04~2022/04/10</option>
-                    <option>2022/04/11~2022/04/17</option>
-                    <option>2022/04/18~2022/04/24</option>
-                    <option>2022/04/25~2022/05/01</option>
-                </Selectall>
-                <Selectall className="gender">
-                    <option>不限性別</option>
-                    <option>男</option>
-                    <option>女</option>
-                </Selectall>
+                <InputName placeholder="username"/>
                 <Search>
                     search
                 </Search>

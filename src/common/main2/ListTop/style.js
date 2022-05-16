@@ -40,7 +40,7 @@ export const Selectright=styled.select`
 `
 export const Selectall=styled.select`
     height: 100%;
-    width: 30%;
+    width: 33.5%;
     border: 2px solid #8E8E8E;
     margin-left: 1%;
     border-radius: 5px;
@@ -48,6 +48,14 @@ export const Selectall=styled.select`
     &.gender{
         width:6%;
     }
+`
+export const InputName=styled.input`
+    height: 80%;
+    width: 33.5%;
+    border: 2px solid #8E8E8E;
+    margin-left: 1%;
+    border-radius: 5px;
+    text-align: center;
 `
 export const Search=styled.button`
     height: 100%;

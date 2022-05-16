@@ -43,7 +43,7 @@ export const InPutL = styled.input`
     font-family:arial;
 
 `
-export const DivLog = styled.a`
+export const DivLog = styled.div`
     height:45px;
     width:300px;
     font-size:14px;

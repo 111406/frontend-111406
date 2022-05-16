@@ -8,18 +8,18 @@ class DataTop extends Component{
                     <Div1Center className="Div1Center2">
                         <Div2>
                             <Div2Detail className="D2Text">
-                                總人數(人)
+                                使用者名稱
                             </Div2Detail>
                             <Div2Detail className="D2Data">
-                                5000
+                                Michael
                             </Div2Detail>
                         </Div2>
                         <Div2>
                             <Div2Detail className="D2Text">
-                                分析資料數(筆)
+                                性別
                             </Div2Detail>
                             <Div2Detail className="D2Data">
-                                12
+                                男
                             </Div2Detail>
                         </Div2>
                     </Div1Center>
