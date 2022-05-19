@@ -1,5 +1,8 @@
 import React,{Component} from "react";
 import{HeaderWrapper,HeaderList,LogoText,PeoLogo}from'./style';
+function A(){
+    window.location.reload('./main2');
+}
 class Header extends Component{
     render(){
         return(
@@ -10,7 +13,7 @@ class Header extends Component{
                         管理系統
                     </LogoText>
                 </HeaderList>
-                <PeoLogo>
+                <PeoLogo onClick={()=>{A()}}>
                     <img src="https://i.imgur.com/H7a6zp6.jpg" height={50} width={50}></img>
                 </PeoLogo>
             </HeaderWrapper>

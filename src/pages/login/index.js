@@ -24,7 +24,7 @@ class Login1 extends Component{
                     <Cent>
                         <DivLog>
                                 <img src="https://i.imgur.com/qlc1u8C.jpg" height={30} width={30}></img>
-                                <InPutL id="passw" type="text" placeholder="PASSWORD" size="30" ></InPutL>
+                                <InPutL id="passw" type="password" placeholder="PASSWORD" size="30" ></InPutL>
                         </DivLog>
                     </Cent>
                     <Cent2>
