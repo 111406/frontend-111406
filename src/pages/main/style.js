@@ -13,7 +13,6 @@ export const Divtop = styled.div`
     margin: 27px auto;
     margin-left: 3%;
     border-radius: 5px;
-    overflow: hidden;
 
 `
 

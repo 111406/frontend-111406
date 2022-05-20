@@ -1,6 +1,6 @@
 import React, { Component ,Fragment} from 'react'
 import './style.css'
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import { BrowserRouter,Route,Routes,Link } from 'react-router-dom';
 import Login from './pages/login/index.js';
 import MainPage from './pages/main/index.js';
 import MainPage2 from './pages/main2/index.js';

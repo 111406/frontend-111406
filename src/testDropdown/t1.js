@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import{Selectcenter,Div0,Buttona,Selectright,Selectall,Search}from'./style.js';
+import{Selectcenter,Div0,Buttona,Selectright,Selectall,Search}from'./sty.js';
 import {options,options2,options3,options4,options5} from './a.js';
 var body="Biceps";
 var dataType="TestData";
@@ -38,7 +38,7 @@ function onClickSerch(){
     ]
     console.log(c);
 }
-class SelectList extends Component{
+class T1 extends Component{
 
     render(){
         return (
@@ -86,4 +86,4 @@ class SelectList extends Component{
                 </Search>
             </Div0>
         )}}
-export default SelectList;
+export default T1;
