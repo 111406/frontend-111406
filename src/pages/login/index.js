@@ -2,9 +2,9 @@ import React,{Component} from "react";
 // import './style.css'
 import{HeaderWrapper}from'./style';
 import{Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin}from'./cen';
-
-class Login1 extends Component{
-    render(){
+import { useNavigate } from "react-router-dom";
+const Login1 = () => {
+    const navigate = useNavigate();
         return (
             <div>
                 <HeaderWrapper> </HeaderWrapper>
@@ -28,7 +28,7 @@ class Login1 extends Component{
                         </DivLog>
                     </Cent>
                     <Cent2>
-                        <DivLogin href="./main">
+                        <DivLogin onClick={()=>navigate("/main")}>
                                 Login
                         </DivLogin>
                     </Cent2>
@@ -36,5 +36,4 @@ class Login1 extends Component{
             </div>
             );
     }
-}
 export default Login1;

@@ -1,10 +1,9 @@
 import React,{Component} from "react";
 import{HeaderWrapper,HeaderList,LogoText,PeoLogo}from'./style';
-function A(){
-    window.location.reload('./main2');
-}
-class Header extends Component{
-    render(){
+import {useNavigate} from "react-router-dom";
+
+const Header = () => {
+    const navigate = useNavigate();
         return(
             <HeaderWrapper>
                 <img src="https://i.imgur.com/SOaMg6w.png" height={64} width={100}></img>
@@ -13,11 +12,11 @@ class Header extends Component{
                         管理系統
                     </LogoText>
                 </HeaderList>
-                <PeoLogo onClick={()=>{A()}}>
+                <PeoLogo onClick={()=>navigate("/")}>
                     <img src="https://i.imgur.com/H7a6zp6.jpg" height={50} width={50}></img>
                 </PeoLogo>
             </HeaderWrapper>
         )
     }
-}
+
 export default Header;

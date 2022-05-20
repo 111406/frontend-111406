@@ -26,6 +26,18 @@ function onChangeInputGender(value) {
     gender=value;
     console.log(gender);
 }
+function onClickSerch(){
+    var c=[
+        {
+            body,
+            dataType,
+            age,
+            date,
+            gender
+        }
+    ]
+    console.log(c);
+}
 class SelectList extends Component{
 
     render(){
@@ -69,7 +81,7 @@ class SelectList extends Component{
                         )
                     )}
                 </Selectall>
-                <Search>
+                <Search onClick={()=>onClickSerch()}>
                     搜尋
                 </Search>
             </Div0>

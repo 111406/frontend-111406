@@ -13,8 +13,7 @@ class MainPage extends Component{
                 <Header/>
                 <Div0>
                     <Divtop>
-                        <T1></T1>
-                        {T1.c}
+                        <SelectList></SelectList>
                     </Divtop>
                     <Divleft>
                         <DataTop/>
