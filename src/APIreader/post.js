@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import{Div0,Table0,Thead0,Th0}from'./style';
-import {Col} from 'react-bootstrap'
 class ContentFeed extends React.Component{
     constructor(props){
         super(props);
