@@ -2,9 +2,9 @@ import React,{Component} from "react";
 // import './style.css'
 import{HeaderWrapper}from'./style';
 import{Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin}from'./cen';
-
-class Login1 extends Component{
-    render(){
+import { useNavigate } from "react-router-dom";
+const Login1 = () => {
+    const navigate = useNavigate();
         return (
             <div>
                 <HeaderWrapper> </HeaderWrapper>
@@ -24,11 +24,11 @@ class Login1 extends Component{
                     <Cent>
                         <DivLog>
                                 <img src="https://i.imgur.com/qlc1u8C.jpg" height={30} width={30}></img>
-                                <InPutL id="passw" type="text" placeholder="PASSWORD" size="30" ></InPutL>
+                                <InPutL id="passw" type="password" placeholder="PASSWORD" size="30" ></InPutL>
                         </DivLog>
                     </Cent>
                     <Cent2>
-                        <DivLogin href="./main">
+                        <DivLogin onClick={()=>navigate("/main")}>
                                 Login
                         </DivLogin>
                     </Cent2>
@@ -36,5 +36,4 @@ class Login1 extends Component{
             </div>
             );
     }
-}
 export default Login1;

@@ -13,9 +13,9 @@ class SelectList extends Component{
                     <option>三角肌</option>
                     <option>下肢</option>
                 </Selectcenter>
-                <Selectright>
-                    <option>測試資料</option>
-                    <option>運動資料</option>
+                <Selectright id="typedata">
+                    <option value={0}>測試資料</option>
+                    <option value={1}>運動資料</option>
                 </Selectright>
                 <Selectall>
                     <option>不限年齡</option>

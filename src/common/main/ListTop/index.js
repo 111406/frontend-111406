@@ -1,46 +1,88 @@
 import React,{Component} from "react";
-import{Div0,Buttona,Selectcenter,Selectright,Selectall,Search}from'./style';
+import{Selectcenter,Div0,Buttona,Selectright,Selectall,Search}from'./style.js';
+import {options,options2,options3,options4,options5} from './a.js';
+var body="Biceps";
+var dataType="TestData";
+var age='AllAge';
+var date='AllDate'
+var gender='NoGender';
+function onChangeInputBody(value) {
+    body=value;
+    console.log(body);
+}
+function onChangeInputDataType(value) {
+    dataType=value;
+    console.log(dataType);
+}
+function onChangeInputAge(value) {
+    age=value;
+    console.log(age);
+}
+function onChangeInputDate(value) {
+    date=value;
+    console.log(date);
+}
+function onChangeInputGender(value) {
+    gender=value;
+    console.log(gender);
+}
+function onClickSerch(){
+    var c=[
+        {
+            body,
+            dataType,
+            age,
+            date,
+            gender
+        }
+    ]
+    console.log(c);
+}
 class SelectList extends Component{
+
     render(){
-        const Aaa='./main'
         return (
             <Div0>
                 <Buttona href="./main2">
                     全體
                 </Buttona>
-                <Selectcenter>
-                    <option>二頭肌</option>
-                    <option>三角肌</option>
-                    <option>下肢</option>
+                <Selectcenter onChange={(e)=>onChangeInputBody(e.target.value)}>
+                    {
+                        options.map((a)=>(
+                        <option key={a.key} value={a.value}>{a.label}</option>
+                        )
+                    )}
                 </Selectcenter>
-                <Selectright>
-                    <option>測試資料</option>
-                    <option>運動資料</option>
+                <Selectright onChange={(e)=>onChangeInputDataType(e.target.value)}>
+                    {
+                        options2.map((a)=>(
+                        <option key={a.key} value={a.value}>{a.label}</option>
+                        )
+                    )}
                 </Selectright>
-                <Selectall>
-                    <option>不限年齡</option>
-                    <option>65~70歲</option>
-                    <option>70~75歲</option>
-                    <option>75~80歲</option>
-                    <option>80~85歲</option>
-                    <option>85~90歲</option>
-                    <option>90~95歲</option>
-                    <option>95~100歲</option>
+                <Selectall onChange={(e)=>onChangeInputAge(e.target.value)}>
+                    {
+                        options3.map((a)=>(
+                        <option key={a.key} value={a.value}>{a.label}</option>
+                        )
+                    )}
                 </Selectall>
-                <Selectall>
-                    <option>不限日期</option>
-                    <option>2022/04/04~2022/04/10</option>
-                    <option>2022/04/11~2022/04/17</option>
-                    <option>2022/04/18~2022/04/24</option>
-                    <option>2022/04/25~2022/05/01</option>
+                <Selectall onChange={(e)=>onChangeInputDate(e.target.value)}>
+                    {
+                        options4.map((a)=>(
+                        <option key={a.key} value={a.value}>{a.label}</option>
+                        )
+                    )}
                 </Selectall>
-                <Selectall className="gender">
-                    <option>不限性別</option>
-                    <option>男</option>
-                    <option>女</option>
+                <Selectall className="gender" onChange={(e)=>onChangeInputGender(e.target.value)}>
+                    {
+                        options5.map((a)=>(
+                        <option key={a.key} value={a.value}>{a.label}</option>
+                        )
+                    )}
                 </Selectall>
-                <Search>
-                    search
+                <Search onClick={()=>onClickSerch()}>
+                    搜尋
                 </Search>
             </Div0>
         )}}
