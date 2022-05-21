@@ -13,7 +13,7 @@ class ContentFeed extends React.Component{
     this.getItems();
     }
     getItems(){
-    fetch('')
+    fetch('https://vaulted-epigram-349713.de.r.appspot.com/api/user')
     .then(results=>results.json())
     .then(results=>this.setState({"data":results.data}));
     }
