@@ -26,6 +26,7 @@ class ContentFeed extends React.Component{
                             <Th0 className="th1" scope="col">birthday</Th0>
                             <Th0 className="th1" scope="col">height</Th0>
                             <Th0 className="th1" scope="col">weight</Th0>
+                            <Th0 className="th1" scope="col">ctime</Th0>
                         </tr>
                 </Thead0>
                     <tbody>
@@ -36,6 +37,7 @@ class ContentFeed extends React.Component{
                                     <Th0 className="th1">{item.birthday}</Th0>
                                     <Th0 className="th1">{item.height}</Th0>
                                     <Th0 className="th1">{item.weight}</Th0>
+                                    <Th0 className="th1">{item.role}</Th0>
                                 </tr>
                             ))
                         }
@@ -43,6 +45,6 @@ class ContentFeed extends React.Component{
                 </Table0>
             </Div0>
     );
-  }
+}
 }
 export default ContentFeed;
