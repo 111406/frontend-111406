@@ -10,7 +10,7 @@ const Login1 = () => {
                 <HeaderWrapper> </HeaderWrapper>
                 <Ces>
                     <Cent2>
-                        <img src="https://img.onl/sB5yqA" height={94} width={148}></img>
+                        <img src="https://i.imgur.com/SOaMg6w.png" height={94} width={148}></img>
                     </Cent2>
                     <Cent>
                         <LogoT>管理系統</LogoT>
