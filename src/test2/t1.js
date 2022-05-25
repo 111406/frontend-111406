@@ -33,7 +33,7 @@ function onClickSerch(){
     console.log(c);
 }
 
-class SelectList2 extends Component{
+class T2 extends Component{
 
     render(){
         return (
@@ -68,4 +68,4 @@ class SelectList2 extends Component{
                 </Search>
             </Div0>
         )}}
-export default SelectList2;
+export default T2;

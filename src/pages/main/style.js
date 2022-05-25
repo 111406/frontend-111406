@@ -20,6 +20,7 @@ export const Divleft = styled.div`
     width: 55%;
     height: 85%;
     float: left;
+    margin-top:1.7%;
     margin-left: 5%;
     min-width: 575px;
 
@@ -27,6 +28,7 @@ export const Divleft = styled.div`
 export const Divright=styled.div`
     float: right;
     width: 35%;
+    margin-top:5%;
     height: 70%;
     margin-right: 5%;
     margin-left: 0%;
