@@ -4,6 +4,7 @@ import { BrowserRouter,Route,Routes,Link } from 'react-router-dom';
 import Login from './pages/login/index.js';
 import MainPage from './pages/main/index.js';
 import MainPage2 from './pages/main2/index.js';
+import Home from './testPanel/Home.js';
 class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class App extends Component {
             <Route path='/' element={<Login/>}></Route>
             <Route path='/main' element={<MainPage/>}></Route>
             <Route path='/main2' element={<MainPage2/>}></Route>
+            <Route path='/main3' element={<Home/>}></Route>
           </Routes>
         </BrowserRouter>
 

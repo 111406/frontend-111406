@@ -1,20 +1,27 @@
-import React,{Component} from "react";
-import{HeaderWrapper,HeaderList,LogoText,PeoLogo}from'./style';
+import React from "react";
+import{Logo,HeaderWrapper,HeaderList,LogoText,PeoLogo,PeoLogo2}from'./style';
 import {useNavigate} from "react-router-dom";
-
+import styledComponents from "styled-components";
+import "./sty.css"
 const Header = () => {
     const navigate = useNavigate();
         return(
             <HeaderWrapper>
-                <img src="https://i.imgur.com/SOaMg6w.png" height={64} width={100}></img>
+                <Logo>
+                    <img src='https://i.imgur.com/BJ21wvu.png'  height={56} width={87.5}></img>
+                </Logo>
                 <HeaderList>
                     <LogoText>
                         管理系統
                     </LogoText>
                 </HeaderList>
+                <PeoLogo2 onClick={()=>navigate("/")} className="ho">
+                    修改計畫
+                </PeoLogo2>
                 <PeoLogo onClick={()=>navigate("/")}>
-                    <img src="https://i.imgur.com/H7a6zp6.jpg" height={50} width={50}></img>
+                    <img src='https://i.imgur.com/hBWPJVc.png' height={32} width={40}></img>
                 </PeoLogo>
+
             </HeaderWrapper>
         )
     }

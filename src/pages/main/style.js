@@ -17,18 +17,19 @@ export const Divtop = styled.div`
 `
 
 export const Divleft = styled.div`
-    width: 55%;
+    width: 50%;
     height: 85%;
     float: left;
-    margin-top:1.7%;
+    margin-top:0%;
     margin-left: 5%;
+    margin-right:0px;
     min-width: 575px;
 
 `
 export const Divright=styled.div`
     float: right;
-    width: 35%;
-    margin-top:5%;
+    width: 40%;
+    margin-top:1.25%;
     height: 70%;
     margin-right: 5%;
     margin-left: 0%;

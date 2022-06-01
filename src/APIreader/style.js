@@ -8,7 +8,7 @@ export const Div0 = styled.div`
 `
 export const Table0=styled.table`
     margin-top:0%;
-    font-size:20px;
+    font-size:15px;
 `
 export const Thead0=styled.thead`
     border-bottom:2px solid #8E8E8E;
@@ -19,7 +19,7 @@ export const Th0=styled.th`
     padding-bottom:9px;
     padding-top:9px;
     &.th1{
-        border-left:2px solid #8E8E8E;
+        border-left:1px solid #8E8E8E;
     }
 `
 export const Tr0=styled.th`

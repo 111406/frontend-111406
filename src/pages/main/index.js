@@ -5,7 +5,6 @@ import DataTop from "../../common/main/Datatop/index.js";
 import DataDraw from "../../common/main/DataDraw/index.js";
 import SelectList from "../../common/main/ListTop/index.js";
 import DataSheet from "../../common/main/DataSheet/index.js";
-import T1 from "../../testDropdown/t1.js";
 class MainPage extends Component{
     render(){
         return (

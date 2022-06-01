@@ -38,7 +38,7 @@ class SelectList2 extends Component{
     render(){
         return (
             <Div0>
-                <Buttona href="./main2">
+                <Buttona href="./main">
                     個人
                 </Buttona>
                 <Selectcenter onChange={(e)=>onChangeInputBody(e.target.value)}>

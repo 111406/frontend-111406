@@ -3,7 +3,7 @@ export const Div0 = styled.div`
     width: 95%;
     margin-left:0;
     height: 30%;
-    margin-top: 3%;
+    margin-top: 0%;
     float: left;
 
 `
@@ -20,6 +20,7 @@ export const Div1 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 2px 3px 1px #D0D0D0;
 
 `
 export const Div1Center = styled.div`
