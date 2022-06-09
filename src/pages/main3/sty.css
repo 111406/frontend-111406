@@ -1,0 +1,19 @@
+.container::-webkit-scrollbar {
+    width: 7px;
+}
+.container::-webkit-scrollbar-button{
+    background: transparent;
+    border-radius: 4px;
+}
+.container::-webkit-scrollbar-track-piece{
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-track {
+    box-shadow: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color:rgba(0, 0,0, 0.4);
+    border-radius: 4px;
+}

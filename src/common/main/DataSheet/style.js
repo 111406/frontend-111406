@@ -6,7 +6,7 @@ export const Div0 = styled.div`
     border: 2px solid #8E8E8E;
     border-radius:10px;
     overflow:hidden;
-    box-shadow: 2px 2px 5px 1px #8e8e8e;
+    box-shadow: 2px 2px 3px 1px #D0D0D0;
 
 `
 export const Div1 = styled.div`

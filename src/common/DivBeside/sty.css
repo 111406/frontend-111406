@@ -1,0 +1,44 @@
+.accordion {
+    width: 500px;
+    margin: 0px auto;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+.title,.accordion :hover {
+    background-color: #ccc;
+}
+.title {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #ccc;
+    border-top: 1px solid #fff;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-box {
+    background: rgb(250, 245, 245);
+    padding: 0px 10px;
+    overflow: hidden;
+    height: 40px;
+    transition: .5s;
+}
+.content-box p:last-child {
+    text-align: right;
+}
+.choose{
+    font-size: 16px;
+    margin-top: 5px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

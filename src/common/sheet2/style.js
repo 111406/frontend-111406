@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const Div0 = styled.div`
     overflow:auto;
     height:100%;
-    width:100%;
+    width:80%;
 
 `
 export const Table0=styled.table`
