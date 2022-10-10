@@ -15,8 +15,8 @@ export const Divtop =styled.div`
     margin: 0,auto;
 `
 export const LogoText = styled.p`
-    font-size:30px;
-    color:white;
+    font-size:23px;
+    color:black;
     font-family: 'Noto Sans TC', sans-serif;
     width: 120px;
     margin-top: 40px;

@@ -1,9 +1,52 @@
 import styled from 'styled-components';
 
+export const Div0 = styled.div`
+    width: 100%;
+    margin: 0 auto;
+    height:100vh;
+    overflow: auto;
+    min-width: 1250px;
+    max-width: 1920px;
+    &::-webkit-scrollbar {
 
+      width: 7px;
+
+    }
+
+  &::-webkit-scrollbar-button {
+
+      background: transparent;
+
+      border-radius: 4px;
+
+    }
+
+  &::-webkit-scrollbar-track-piece {
+
+      background: transparent;
+
+    }
+
+  &::-webkit-scrollbar-thumb {
+
+      border-radius: 4px;
+
+      background-color: rgba(0, 0, 0, 0.4);
+
+      border: 1px solid slategrey;
+
+    }
+
+  &::-webkit-scrollbar-track {
+
+      box-shadow: transparent;
+
+    }
+
+`
 export const Ces = styled.div`
     border: 3px solid #7c9c99;
-    margin:auto;
+    margin: auto;
     border-radius:10px;
     height:500px;
     width:400px;
@@ -55,7 +98,7 @@ export const DivLog = styled.div`
     align-items: center;
 
 `
-export const DivLogin = styled.a`
+export const DivLogin = styled.input`
     height:45px;
     width:300px;
     font-size:16px;

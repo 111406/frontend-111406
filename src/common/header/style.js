@@ -42,6 +42,9 @@ export const PeoLogo2=styled.button`
     align-items: center;
     background-color:transparent;
     border: 0;
+    &:hover{
+        background-color: rgba(136, 236, 178, 0.803);
+    }
 `;
 
 export const PeoLogo=styled.button`

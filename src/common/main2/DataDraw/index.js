@@ -1,10 +1,20 @@
-import React,{Component} from "react";
-import{Div0}from'./style';
-class DataDraw extends Component{
-    render(){
-        return (
-            <Div0>
-                <img src="https://i.imgur.com/00eB6xn.png" height={250} width={500}></img>
-            </Div0>
-        )}}
+import React, { PureComponent ,useState } from 'react';
+import { Div0,Div1 } from './style.js';
+import { Line } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
+import {data1234} from './a.js'
+
+
+
+
+
+const DataDraw = () => {
+    return (
+    <Div0>
+        <Div1>
+            <Line data={data1234} />
+        </Div1>
+    </Div0>
+    );
+}
 export default DataDraw;
