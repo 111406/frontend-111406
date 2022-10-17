@@ -13,4 +13,12 @@ export const DataInfoItem = styled.div`
     background-color:white;
     border:gray 2px solid;
     border-radius:20px;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap:20px;
+`
+export const Div3 =styled.div`
+    font-size:20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    padding-right: 20px;
+    
 `
