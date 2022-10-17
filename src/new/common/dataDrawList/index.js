@@ -4,8 +4,9 @@ import React,{Component,useState} from "react";
 // import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from"recharts";
 import { Line } from "react-chartjs-2";
 import {Div0,DataDrawItem,Div1,Table0,Thead0,Th0} from'./sty';
+import { Token } from "../token";
 // import {Dataq} from './data.js'
-const token ='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYWRtaW4iLCJfaWQiOiI2MzRhNDg5OTJkNzAyY2EzYWRlNTlmMzYiLCJlbWFpbCI6InpzZGE1ODU4c2RhQGdtYWlsLmNvbSIsInJvbGUiOjkwMCwiZXhwIjoxNjY2MDAzNzA4fQ.cKregBo_KYYQPEzSabe27u2iN6mLKzQbqrQ4upddAEY';
+
 var dataa=[];
 
 
@@ -45,7 +46,7 @@ fetch('https://backend-111406.onrender.com/api/record/admin', {
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYWRtaW4iLCJfaWQiOiI2MzRhNDg5OTJkNzAyY2EzYWRlNTlmMzYiLCJlbWFpbCI6InpzZGE1ODU4c2RhQGdtYWlsLmNvbSIsInJvbGUiOjkwMCwiZXhwIjoxNjY2MDAzNzA4fQ.cKregBo_KYYQPEzSabe27u2iN6mLKzQbqrQ4upddAEY`, /* 把token放在這 */
+                    'token': Token, /* 把token放在這 */
                 })
 }
     )
@@ -136,7 +137,7 @@ class DataDrawList extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYWRtaW4iLCJfaWQiOiI2MzRhNDg5OTJkNzAyY2EzYWRlNTlmMzYiLCJlbWFpbCI6InpzZGE1ODU4c2RhQGdtYWlsLmNvbSIsInJvbGUiOjkwMCwiZXhwIjoxNjY2MDAzNzA4fQ.cKregBo_KYYQPEzSabe27u2iN6mLKzQbqrQ4upddAEY`, /* 把token放在這 */
+                    'token': Token, /* 把token放在這 */
                 })
 }
     )
