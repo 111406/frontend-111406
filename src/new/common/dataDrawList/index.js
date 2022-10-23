@@ -11,16 +11,19 @@ var dataa=[];
 var a=[];
 var stimes=[];
 var bicepstimes=[];
-var userNameSearch =window.location.href;
-userNameSearch=userNameSearch.replace("http://localhost:3000/personal/","")
-console.log(userNameSearch);
+let userNameSearch ="/admin";
+userNameSearch =window.location.href;
+userNameSearch=userNameSearch.replace("http://localhost:3000/personal","")
+if(!userNameSearch){
+    userNameSearch ="/admin";
+}
 var dataB={
     
     labels:a,
     datasets:[
         {
             label: "biceps",
-            data: bicepstimes,
+            data: [],
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
@@ -34,7 +37,7 @@ var dataS={
     datasets:[
         {
             label: "biceps",
-            data: bicepstimes,
+            data:[],
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
@@ -42,7 +45,39 @@ var dataS={
         }
     ]
 };
-fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
+
+
+      
+class DataDrawList extends Component{
+    
+    constructor(props){
+        super(props);
+        // console.log(props);
+        this.state={
+        "data":[]
+    };
+    }
+    componentDidMount(){
+    this.getItems();
+    }
+    
+    getItems(){
+    fetch('https://backend-111406.onrender.com/api/record'+userNameSearch, {
+                method: "GET",
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'token': Token, /* 把token放在這 */
+                })
+}
+    )
+    .then(results=>results.json())
+    .then(results=>{this.setState({"data":results.data})});
+    }
+    
+    render(){
+        userNameSearch =window.location.href;
+        userNameSearch=userNameSearch.replace("http://localhost:3000/personal","")
+        fetch('https://backend-111406.onrender.com/api/record'+userNameSearch, {
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
@@ -54,20 +89,27 @@ fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
         return response.json();
       })
       .then(function(myJson) {
+        // console.log(myJson.data);
         return myJson.data;
       })
       .then(function(myData) {
+        bicepstimes=[];
+        stimes=[];
+        a=[];
         for (var i = 0; i < myData.length; i++) {
             if(myData[i].part=='二頭肌'){
                 bicepstimes.push(myData[i].times);
-                a.push(myData[i].create_time);
+                let arr1 = myData[i].create_time.split(' ');
+                let arr = arr1[0].split('-');
+                a.push(arr[1]+'/'+arr[2]);
             }
             if(myData[i].part=='股四頭肌'){
                 stimes.push(myData[i].times);
                 
             }
           }
-          dataB={
+          console.log(bicepstimes);
+            dataB={
     
             labels:a,
             datasets:[
@@ -79,14 +121,6 @@ fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
                     borderColor: "rgba(75,192,192,1)",
                     lineTension: 0.4
                 },
-                // {
-                //     label: "下肢",
-                //     data: stimes,
-                //     fill: true,
-                //     backgroundColor: "rgba(75,192,192,0.2)",
-                //     borderColor: "rgba(75,192,192,1)",
-                //     lineTension: 0.4
-                // }
                 
             ]
 
@@ -96,14 +130,7 @@ fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
     
             labels:a,
             datasets:[
-                // {
-                //     label: "二頭肌",
-                //     data: bicepstimes,
-                //     fill: true,
-                //     backgroundColor: "rgba(75,192,192,0.2)",
-                //     borderColor: "rgba(75,192,192,1)",
-                //     lineTension: 0.4
-                // },
+
                 {
                     label: "下肢",
                     data: stimes,
@@ -118,35 +145,6 @@ fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
             
         };
       });
-      
-class DataDrawList extends Component{
-    
-    constructor(props){
-        super(props);
-        console.log(props);
-        this.state={
-        "data":[]
-    };
-    }
-    componentDidMount(){
-    this.getItems();
-    }
-    
-    getItems(){
-    fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
-                method: "GET",
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
-                })
-}
-    )
-    .then(results=>results.json())
-    .then(results=>{this.setState({"data":results.data})});
-    }
-    
-    render(){
-        
         return (
                 <Div0>
                     <DataDrawItem>

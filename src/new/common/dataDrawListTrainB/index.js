@@ -23,28 +23,7 @@ const data = {
     },
   ],
 };
-fetch('https://backend-111406.onrender.com/api/target/admin', {
-                method: "GET",
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
-                })
-}
-    )
-    .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        
-        
-        return myJson.data[0];
-      })
-      .then(function(a) {
-        
-        // console.log(a);
-        // console.log(a.actual_times);
-        return a.actual_times;
-      })
+
 class DataDrawListTrainB extends Component{
     static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si';
 
@@ -81,6 +60,28 @@ class DataDrawListTrainB extends Component{
     .then(results=>{this.setState({"data":results.data})});
     }
     render(){
+      fetch('https://backend-111406.onrender.com/api/target/admin', {
+                method: "GET",
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'token': Token, /* 把token放在這 */
+                })
+}
+    )
+    .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        
+        // console.log(myJson.data[0].actual_times[0]);
+        return myJson.data[0];
+      })
+      .then(function(a) {
+        
+        // console.log(a);
+        // console.log(a.actual_times);
+        return a.actual_times;
+      })
         return (
                 <Div0>
                     <DataDrawItem>

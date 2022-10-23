@@ -8,28 +8,6 @@ import { useNavigate } from "react-router-dom";
 // const [errorMessage, setErrorMessage] = useState("");
 const allUser=[];
 
-fetch('https://backend-111406.onrender.com/api/user', {
-                method: "GET",
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
-                })
-}
-    )
-    .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        return myJson.data;
-      })
-      .then(function(user) {
-        for (var i = 0; i < user.length; i++) {
-            allUser.push(user[i].user_id);
-            
-          }
-
-        console.log(allUser);
-      })
       
 const SearchPage = () => {
         const navigate = useNavigate();
@@ -37,10 +15,33 @@ const SearchPage = () => {
         const handleSearchName = (e) => {
             setSearchName(e.target.value);
           };
+          
+fetch('https://backend-111406.onrender.com/api/user', {
+  method: "GET",
+  headers: new Headers({
+      'Content-Type': 'application/json',
+      'token': Token, /* 把token放在這 */
+  })
+}
+)
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+return myJson.data;
+})
+.then(function(user) {
+for (var i = 0; i < user.length; i++) {
+allUser.push(user[i].user_id);
+
+}
+
+// console.log(allUser);
+})
         const handleSearch = (e) => {
             for (var i = 0; i < allUser.length; i++) {
                 if(allUser[i]==searchName){
-                    console.log(searchName);
+                    // console.log(searchName);
                     navigate('/personal/'+searchName);
                 }
               }

@@ -36,7 +36,7 @@ class DataInfoList extends Component{
                         <Div3>
                             <DivDetail1>暱稱</DivDetail1>
                             <DivDetail2>{this.state.data.user_id}</DivDetail2>
-                            {console.log(this.state.data.other_detail)}
+                            {console.log(this.state.data)}
                         </Div3>
                         <Div3>
                             <DivDetail1>性別</DivDetail1>
@@ -82,8 +82,8 @@ class DataInfoList extends Component{
                             <DivDetail2>{'true'}</DivDetail2>
                         </Div3>
                         <Div3>
-                            <DivDetail1>訓練次數</DivDetail1>
-                            <DivDetail2>{'4'}</DivDetail2>
+                            <DivDetail1>權限</DivDetail1>
+                            <DivDetail2>{this.state.data.role}</DivDetail2>
                         </Div3>
                         <Div3>
                             <DivDetail1>運動次數</DivDetail1>
