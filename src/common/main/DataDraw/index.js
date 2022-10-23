@@ -17,10 +17,8 @@ headers: new Headers({
 .then(res => res.json())
 .then(data => {
     dataT=data;
-    console.log(dataT);
 })
 .catch(e => {
-    console.log(0);
 })
 
 

@@ -15,7 +15,6 @@ class ContentFeed2 extends React.Component{
     fetch('https://backend-111406.herokuapp.com/api/record/zsda5858sda')
     .then(results=>results.json())
     .then(results=>this.setState({"data":results.data}));
-    console.log(this.state.data);
 }
     
     render(){

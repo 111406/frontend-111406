@@ -6,14 +6,14 @@ import { Line } from "react-chartjs-2";
 import {Div0,DataDrawItem,Div1,Table0,Thead0,Th0} from'./sty';
 import { Token } from "../token";
 // import {Dataq} from './data.js'
-
+import { useNavigate,useParams } from "react-router-dom";
 var dataa=[];
-
-
-
 var a=[];
 var stimes=[];
 var bicepstimes=[];
+var userNameSearch =window.location.href;
+userNameSearch=userNameSearch.replace("http://localhost:3000/personal/","")
+console.log(userNameSearch);
 var dataB={
     
     labels:a,
@@ -42,7 +42,7 @@ var dataS={
         }
     ]
 };
-fetch('https://backend-111406.onrender.com/api/record/admin', {
+fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
@@ -54,7 +54,6 @@ fetch('https://backend-111406.onrender.com/api/record/admin', {
         return response.json();
       })
       .then(function(myJson) {
-        console.log(myJson.data);
         return myJson.data;
       })
       .then(function(myData) {
@@ -119,12 +118,12 @@ fetch('https://backend-111406.onrender.com/api/record/admin', {
             
         };
       });
-      console.log("bicepstimes");
-      console.log(bicepstimes);
-
+      
 class DataDrawList extends Component{
+    
     constructor(props){
         super(props);
+        console.log(props);
         this.state={
         "data":[]
     };
@@ -132,8 +131,9 @@ class DataDrawList extends Component{
     componentDidMount(){
     this.getItems();
     }
+    
     getItems(){
-    fetch('https://backend-111406.onrender.com/api/record/admin', {
+    fetch('https://backend-111406.onrender.com/api/record/'+userNameSearch, {
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
@@ -144,7 +144,9 @@ class DataDrawList extends Component{
     .then(results=>results.json())
     .then(results=>{this.setState({"data":results.data})});
     }
+    
     render(){
+        
         return (
                 <Div0>
                     <DataDrawItem>

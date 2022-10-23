@@ -16,11 +16,9 @@ const Login1 = () => {
         login(username, password).then((data) => {
           if (data.token ==null) {
             setLoading(false);
-            console.log(data.token);
             return setErrorMessage(data.status);
           }
           else{
-            console.log(data.token);
           }
           setLoading(false);
         });

@@ -6,9 +6,11 @@ import ChooseList from '../../common/chooseList/index'
 import DataDrawListTrainB from "../../common/dataDrawListTrainB";
 import DataDrawListTrainD from "../../common/dataDrawListTrainD";
 import DataDrawListTrainS from "../../common/dataDrawListTrainS";
-import Header from '../../common/header/index'
-class NewMainPage extends Component{
-    render(){
+import Header from '../../common/header/index';
+class PersonalPage  extends Component {
+    render(props){
+        
+    
         return (
                 <Div0>
                     <Header></Header>
@@ -25,5 +27,6 @@ class NewMainPage extends Component{
                         <DataListDiv></DataListDiv>
                     </ContentDiv>
                 </Div0>
-        )}}
-export default NewMainPage;
+        )}
+    }
+export default PersonalPage;

@@ -8,23 +8,18 @@ var date='AllDate'
 var gender='NoGender';
 function onChangeInputBody(value) {
     body=value;
-    console.log(body);
 }
 function onChangeInputDataType(value) {
     dataType=value;
-    console.log(dataType);
 }
 function onChangeInputAge(value) {
     age=value;
-    console.log(age);
 }
 function onChangeInputDate(value) {
     date=value;
-    console.log(date);
 }
 function onChangeInputGender(value) {
     gender=value;
-    console.log(gender);
 }
 function onClickSerch(){
     var c=[
@@ -36,7 +31,6 @@ function onClickSerch(){
             gender
         }
     ]
-    console.log(c);
 }
 class SelectList extends Component{
 

@@ -12,8 +12,6 @@ export const login = (user_id, password) => {
         user_id,
         password,})
         ).then((res) =>{ 
-            console.log(res.headers.get('token'))
-            console.log(res.data)
             const {token} = res.data;
             localStorage.setItem('jwToken',token)
             setAuthToken(token)

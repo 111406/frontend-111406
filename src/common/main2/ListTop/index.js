@@ -7,19 +7,15 @@ var date='AllDate'
 var name='NoName';
 function onChangeInputBody(value) {
     body=value;
-    console.log(body);
 }
 function onChangeInputDataType(value) {
     dataType=value;
-    console.log(dataType);
 }
 function onChangeInputDate(value) {
     date=value;
-    console.log(date);
 }
 function onChangeInputName(value){
     name=value;
-    console.log(name);
 }
 function onClickSerch(){
     var c=[
@@ -30,7 +26,6 @@ function onClickSerch(){
             name
         }
     ]
-    console.log(c);
 }
 
 class SelectList2 extends Component{
