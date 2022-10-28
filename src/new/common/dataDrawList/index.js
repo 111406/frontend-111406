@@ -4,8 +4,8 @@ import React,{Component,useState} from "react";
 // import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from"recharts";
 import { Line } from "react-chartjs-2";
 import {Div0,DataDrawItem,Div1,Table0,Thead0,Th0} from'./sty';
-import { Token } from "../token";
 // import {Dataq} from './data.js'
+import { getAuthToken } from "../apiUtil";
 import { useNavigate,useParams } from "react-router-dom";
 var dataa=[];
 var a=[];
@@ -66,7 +66,7 @@ class DataDrawList extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
+                    'token': getAuthToken(), /* 把token放在這 */
                 })
 }
     )
@@ -81,7 +81,7 @@ class DataDrawList extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
+                    'token': getAuthToken(), /* 把token放在這 */
                 })
 }
     )

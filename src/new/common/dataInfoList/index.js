@@ -1,7 +1,8 @@
 import React,{Component,setState} from "react";
 import {Div0,DataInfoItem,Div3,DivDetail1,DivDetail2} from'./sty';
 import Header from '../header/index'
-import { Token } from "../token";
+import { getAuthToken } from "../apiUtil";
+// import { Token } from "../token";
 
 var userNameSearch;
 
@@ -20,12 +21,28 @@ class DataInfoList extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
+                    'token': getAuthToken(), /* 把token放在這 */
                 })
 }
     )
     .then(results=>results.json())
-    .then(results=>{this.setState({"data":results.data})});
+    .then(results=>{this.setState({"data":results.data})
+    console.log("a"+results.data);
+    var a = results.data.other_detail
+    a=a.replace("}",'');
+    const b=a.split(",");
+    const b0 =b[0].split(':');
+    const b1 =b[1].split(':');
+    const b2 =b[2].split(':');
+    const b3 =b[3].split(':');
+    console.log(b3[1]);
+    this.setState({"b0":b0[1]});
+    this.setState({"b1":b1[1]});
+    this.setState({"b2":b2[1]});
+    this.setState({"b3":b3[1]});
+    
+
+});
     }
     render(){
         userNameSearch =window.location.href;
@@ -65,21 +82,21 @@ class DataInfoList extends Component{
                     <DataInfoItem>
                     <Div3>
                             <DivDetail1>高血壓</DivDetail1>
-                            <DivDetail2>{'true'}</DivDetail2>
+                            <DivDetail2>{this.state.b0}</DivDetail2>
                         </Div3>
                         <Div3>
                             <DivDetail1>高血脂</DivDetail1>
-                            <DivDetail2>{'true'}</DivDetail2>
+                            <DivDetail2>{this.state.b1}</DivDetail2>
                         </Div3>
                         <Div3>
                             <DivDetail1>高血醣</DivDetail1>
-                            <DivDetail2>{'true'}</DivDetail2>
+                            <DivDetail2>{this.state.b2}</DivDetail2>
                             </Div3>
                     </DataInfoItem>
                     <DataInfoItem>
                     <Div3>
                             <DivDetail1>運動習慣</DivDetail1>
-                            <DivDetail2>{'true'}</DivDetail2>
+                            <DivDetail2>{this.state.b3}</DivDetail2>
                         </Div3>
                         <Div3>
                             <DivDetail1>權限</DivDetail1>

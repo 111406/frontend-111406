@@ -6,9 +6,10 @@ import ChooseList from '../../common/chooseList/index'
 import DataDrawListTrainB from "../../common/dataDrawListTrainB";
 import DataDrawListTrainD from "../../common/dataDrawListTrainD";
 import DataDrawListTrainS from "../../common/dataDrawListTrainS";
-import Header from '../../common/header/index';
+import Header from "../../common/header";
+import Chart from 'chart.js/auto';
 class PersonalPage  extends Component {
-    render(props){
+    render(){
         
     
         return (
@@ -24,7 +25,6 @@ class PersonalPage  extends Component {
                         <DataDrawDiv><DataDrawListTrainD></DataDrawListTrainD></DataDrawDiv>
                         <Line1>訓練資料─下肢</Line1>
                         <DataDrawDiv><DataDrawListTrainS></DataDrawListTrainS></DataDrawDiv>
-                        <DataListDiv></DataListDiv>
                     </ContentDiv>
                 </Div0>
         )}

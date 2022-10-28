@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {Div0,Logo, LogoText,Personal,AllData,Exit,Whitediv} from './sty.js'
-export default class index extends Component {
-  render() {
+import { useNavigate } from "react-router-dom";
+const  Header=()=> {
+  const navigate = useNavigate();
     return (
       <Div0>
         <Logo>
@@ -9,10 +10,10 @@ export default class index extends Component {
         </Logo>
         <LogoText>管理系統</LogoText>
         <Whitediv></Whitediv>
-        <Personal>個人</Personal>
+        <Personal onClick={()=>navigate("/search")}>個人</Personal>
         <AllData>全部</AllData>
-        <Exit>登出</Exit>
+        <Exit onClick={()=>navigate("/")}>登出</Exit>
       </Div0>
-    )
-  }
+    );
 }
+export default Header;

@@ -4,7 +4,7 @@ import{HeaderWrapper}from'./style';
 import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin}from'./cen';
 import { useNavigate } from "react-router-dom";
 import { login,setAuthToken } from "../../new/common/apiUtil";
-import { Token } from "../../new/common/token";
+// import { Token } from "../../new/common/token";
 const Login1 = () => {
     const [loading, setLoading] = React.useState(false);
     const navigate = useNavigate();

@@ -149,3 +149,14 @@ export const DivLogin = styled.input`
     color:white;
 
 `
+export const Selectall=styled.select`
+    height: 100%;
+    width: 100%;
+    border: 2px solid #8E8E8E;
+    margin-left: 1%;
+    border-radius: 5px;
+    text-align: center;
+    &.gender{
+        width:8%;
+    }
+`

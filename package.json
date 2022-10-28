@@ -48,6 +48,8 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
     "Faker": "^0.7.2"
   }
 }

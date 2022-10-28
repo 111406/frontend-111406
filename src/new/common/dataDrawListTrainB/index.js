@@ -4,7 +4,7 @@ import React,{Component} from "react";
 import {Div0,DataDrawItem} from'./sty';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { Token } from "../token";
+import { getAuthToken } from "../apiUtil";
 const data = {
   labels: ['完成次數', '未完成次數'],
   datasets: [
@@ -25,7 +25,6 @@ const data = {
 };
 
 class DataDrawListTrainB extends Component{
-    static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si';
 
   state = {
     activeIndex: 0,
@@ -52,7 +51,7 @@ class DataDrawListTrainB extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
+                    'token': getAuthToken(), /* 把token放在這 */
                 })
     }
     )
@@ -64,7 +63,7 @@ class DataDrawListTrainB extends Component{
                 method: "GET",
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'token': Token, /* 把token放在這 */
+                    'token': getAuthToken(), /* 把token放在這 */
                 })
 }
     )
