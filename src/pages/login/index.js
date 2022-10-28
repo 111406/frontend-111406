@@ -3,7 +3,8 @@ import React,{Component,useState } from "react";
 import{HeaderWrapper}from'./style';
 import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin}from'./cen';
 import { useNavigate } from "react-router-dom";
-import { login } from "../../new/common/apiUtil";
+import { login,setAuthToken } from "../../new/common/apiUtil";
+import { Token } from "../../new/common/token";
 const Login1 = () => {
     const [loading, setLoading] = React.useState(false);
     const navigate = useNavigate();
@@ -14,11 +15,17 @@ const Login1 = () => {
         setLoading(true);
         setErrorMessage(null);
         login(username, password).then((data) => {
-          if (data.token ==null) {
+          
+          if (data ==null) {
             setLoading(false);
+            console.log(1);
             return setErrorMessage(data.status);
+
           }
           else{
+            console.log(2);
+            setAuthToken(data);
+            navigate("/search");
           }
           setLoading(false);
         });
