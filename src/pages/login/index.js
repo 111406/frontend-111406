@@ -1,9 +1,9 @@
-import React,{Component,useState } from "react";
+import React,{useState } from "react";
 // import './style.css'
 import{HeaderWrapper}from'./style';
-import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin}from'./cen';
+import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
 import { useNavigate } from "react-router-dom";
-import { login,setAuthToken } from "../../new/common/apiUtil";
+// import {getAuthToken } from "../../new/common/apiUtil";
 // import { Token } from "../../new/common/token";
 const Login1 = () => {
     const [loading, setLoading] = React.useState(false);
@@ -12,23 +12,30 @@ const Login1 = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const handleLogin = (e) => {
-        setLoading(true);
-        setErrorMessage(null);
-        login(username, password).then((data) => {
-          
-          if (data ==null) {
-            setLoading(false);
-            console.log(1);
-            return setErrorMessage(data.status);
-
-          }
-          else{
-            console.log(2);
-            setAuthToken(data);
+      setLoading(true)
+      const data={
+        "user_id":username,
+        "password":password
+      };
+      fetch("https://web-backend-111406.onrender.com/api/user/login",{
+        credentials:'include',
+        body:JSON.stringify(data),
+        headers:{
+          'content-type':'application/json',
+        },
+        method:'POST'
+      }).then((response)=>{
+          console.log(response);
+          if(response.status===200){
             navigate("/search");
           }
-          setLoading(false);
-        });
+          else{
+            setErrorMessage('帳號或密碼錯誤')
+            setLoading(false);
+          }
+
+          
+      });
       };
       const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -60,6 +67,7 @@ const Login1 = () => {
                         </DivLog>
                     </Cent>
                     <Cent2>
+                      <DivError>{errorMessage}</DivError>
                         <DivLogin type="button" className="btn btn-primary" value={loading ? '登入中...' : '登入'} onClick={handleLogin} disabled={loading} >
                         </DivLogin>
                     </Cent2>

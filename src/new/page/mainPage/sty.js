@@ -56,7 +56,6 @@ export const Line1 =styled.div`
 export const ContentDiv =styled.div`
     background-color:#F5F5F5;
     overflow:auto;
-    min-height:900px;
     &::-webkit-scrollbar {
 
       width: 7px;

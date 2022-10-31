@@ -1,35 +1,26 @@
-import React,{Component,useState} from "react";
-import {Div0,SearchDiv,ContentDiv,SearchTitle,DivLog,InPutL,DivLogin,Selectall} from'./sty';
-// import { Token } from "../../common/token";
+import React,{useState} from "react";
+import {Div0,SearchDiv,ContentDiv,SearchTitle,DivLog,DivLogin,Selectall} from'./sty';
 import Header from '../../common/header/index';
 import { useNavigate } from "react-router-dom";
-import { getAuthToken } from "../../common/apiUtil";
-// import  AllUser  from "./allUser";
-// const [loading, setLoading] = React.useState(false);
-// const [username, setUsername] = useState("");
-// const [errorMessage, setErrorMessage] = useState("");
+import { setAuthSearchName } from "../../common/apiUtil";
 const allUser=[];
-// const alluser = React.lazy(() => import('./allUser'));
 
 const SearchPage = () => {
-    const tok=getAuthToken();
-    console.log(getAuthToken());
+    // console.log(getAuthToken());
     const options3=[
 
     
     ]
         const navigate = useNavigate();
         const [searchName, setSearchName] = useState("");
-        const [options4, setoptions4] = useState([]);
-        const handleSearchName = (e) => {
-            setSearchName(e.target.value);
-          };
+        const [options4, setoptions4] = useState([]);;
 if (options4.length<2)
-fetch('https://backend-111406.onrender.com/api/user', {
+fetch('https://web-backend-111406.onrender.com/api/user', {
   method: "GET",
+  credentials:'include',
   headers: new Headers({
       'Content-Type': 'application/json',
-      'token': tok, /* 把token放在這 */
+    //   'token': tok, /* 把token放在這 */
   })
 }
 )
@@ -51,12 +42,13 @@ options3.push({
 // setoptions4(options3);
 // console.log(options3);
 setoptions4(options3)
-})
+}).catch((err)=>navigate("/"));
 
 function onChangeInputAge(value) {
     setSearchName(value);
 }
         const handleSearch = (e) => {
+                    setAuthSearchName(searchName);
                     navigate('/personal/'+searchName);
           };
         return (
@@ -66,7 +58,7 @@ function onChangeInputAge(value) {
                         <SearchDiv>
                             <SearchTitle>請輸入欲搜尋使用者：</SearchTitle>
                             <DivLog>
-                                {console.log("123"+options4)}
+                                {/* {console.log("123"+options4)} */}
                             {/* <InPutL id="email" type="text" placeholder="USERNAME" size="30" value={searchName} onChange={handleSearchName} ></InPutL> */}
                             <Selectall onChange={(e)=>onChangeInputAge(e.target.value)}>
                             <option key={0} value='undifine'>請選則欲查詢使用者</option>
@@ -80,7 +72,7 @@ function onChangeInputAge(value) {
                 {/* <AllUser></AllUser> */}
                             </DivLog>
 
-                            <DivLogin type="button" className="btn btn-primary" value={'搜尋'} onClick={handleSearch} disabled={searchName.length==0}>
+                            <DivLogin type="button" className="btn btn-primary" value={'搜尋'} onClick={handleSearch} disabled={searchName.length===0}>
                             </DivLogin>
                         </SearchDiv>
                     </ContentDiv>

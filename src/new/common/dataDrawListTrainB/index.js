@@ -1,132 +1,82 @@
 //訓練個人二頭
 
-import React,{Component} from "react";
-import {Div0,DataDrawItem} from'./sty';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-import { getAuthToken } from "../apiUtil";
-const data = {
-  labels: ['完成次數', '未完成次數'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-      ],
-      borderWidth: 0.5,
-    },
-  ],
-};
+import React,{useState} from "react";
+import {Div0,Table0,Thead0,Th0} from'./sty';
+import { useNavigate } from "react-router-dom";
+import { getAuthSearchName } from "../apiUtil";
+var com=[];
+var userNameSearch="";
+const hc={'left':"左","right":"右",undefined:""}
+const pn={0:"二頭肌",1:"三頭肌",2:"股四頭肌"}
 
-class DataDrawListTrainB extends Component{
+const DataDrawListTrainB=()=>{
+  const [data123,setData123]=useState([]);
+  const navigate = useNavigate();
+      userNameSearch=getAuthSearchName();
+      com=[]
+      // var userNameSearch =window.location.href;
+      // userNameSearch=userNameSearch.replace("http://localhost:3000/personal","")
+      if (data123.length<2){
 
-  state = {
-    activeIndex: 0,
-  };
-
-  onPieEnter = (_, index) => {
-    this.setState({
-      activeIndex: index,
-    });
-  };
-
-
-  constructor(props){
-    super(props);
-    this.state={
-    "data":[]
-  };
-    }
-    componentDidMount(){
-    this.getItems();
-    }
-    getItems(){
-    fetch('https://backend-111406.onrender.com/api/target/admin', {
-                method: "GET",
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'token': getAuthToken(), /* 把token放在這 */
-                })
-    }
-    )
-    .then(results=>results.json())
-    .then(results=>{this.setState({"data":results.data})});
-    }
-    render(){
-      fetch('https://backend-111406.onrender.com/api/target/admin', {
-                method: "GET",
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'token': getAuthToken(), /* 把token放在這 */
-                })
+      fetch('https://web-backend-111406.onrender.com/api/target/'+userNameSearch, {
+        method: "GET",
+        credentials:'include',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            // 'token': getAuthToken(), /* 把token放在這 */
+        })
 }
-    )
-    .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        
-        // console.log(myJson.data[0].actual_times[0]);
-        return myJson.data[0];
-      })
-      .then(function(a) {
-        
-        // console.log(a);
-        // console.log(a.actual_times);
-        return a.actual_times;
-      })
+)
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+return myJson.data;
+})
+.then(function(a) {
+  for(var i =0 ;i<a.length;i++){
+    for(var j=0;j<a[i].user_todos.length;j++){
+
+      for(var k =0;k<5;k++){
+        if(a[i].user_todos[j].actual_times[0].hand){
+          if(a[i].user_todos[j].actual_times[0].times===0){
+            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"失敗","h":hc[a[i].user_todos[j].actual_times[k].hand]})
+          }
+          else{
+            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"成功","h":hc[a[i].user_todos[j].actual_times[k].hand]})
+          }
+      }
+      }
+  }
+    }
+    console.log(com);
+    setData123(com);
+  }).catch((err)=>navigate("/"));
+      }
         return (
                 <Div0>
-                    <DataDrawItem>
-                      {/* {console.log(this.state.data[0])} */}
-                    <Doughnut options={{
-                    padding:"0px",
-                    defaultFontSize:"14px",
-                    responsive: true,
-                  maintainAspectRatio: false,
-                    legend:{
-                        display:false,
-                    },
-                    plugins:{
-                        datalabels: {
-                            color:'#000000',
-                            anchor: "start",
-                            align:"end",
-                            formatter: function(value, context) {
-                                    return context.chart.data.labels[context.dataIndex];
-            }
+                      <Table0 className="table">
+                    <Thead0>
+                        <tr>
+                            <Th0 scope="col">日期</Th0>
+                            <Th0 className="th1" scope="col">部位</Th0>
+                            <Th0 className="th1" scope="col">完成</Th0>
+                        </tr>
+                </Thead0>
+                    <tbody>
+                        {
+                            data123.map((item,index) =>(
+                              
+                                <tr key={index}>
+                                    <Th0>{item.time}</Th0>
+                                    <Th0 className="th1">{String(item.h)+String(item.part)}</Th0>
+                                    <Th0 className="th1">{String(item.complete)}</Th0>
+
+                                </tr>
+                            ))
                         }
-                    } 
-                }} data={data} />
-      </DataDrawItem>
-                    <DataDrawItem>
-                    <Doughnut options={{
-                    padding:"0px",
-                    defaultFontSize:"14px",
-                    responsive: true,
-                  maintainAspectRatio: false,
-                    legend:{
-                        display:false,
-                    },
-                    plugins:{
-                        datalabels: {
-                            color:'#000000',
-                            anchor: "start",
-                            align:"end",
-                            formatter: function(value, context) {
-                                    return context.chart.data.labels[context.dataIndex];
-            }
-                        }
-                    } 
-                }} data={data} />
-                    </DataDrawItem>
-                    <DataDrawItem></DataDrawItem>
+                    </tbody>
+                </Table0>
                 </Div0>
-        )}}
+        );}
 export default DataDrawListTrainB;

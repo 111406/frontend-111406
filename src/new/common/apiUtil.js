@@ -1,26 +1,8 @@
-import axios from "axios";
-import jwt_decode from 'jwt-decode'
 const TOKEN_NAME = "token";
-var token1='';
-const userRequest = axios.create({
-    baseURL: 'https://backend-111406.onrender.com',
-    headers: { 'Content-Type': 'application/json' },
-  })
+const SEARCH_NAME = "admin";
+const COM_COM=[];
 
-export const login = (user_id, password) => {
-    return userRequest.post("/api/user/login",
-    JSON.stringify({
-        user_id,
-        password,})
-        ).then((res) =>{ 
-            const token = res.headers.token
-            console.log(token);
-            localStorage.setItem('jwToken',token);
-            setAuthToken(token);
-            const decoded = jwt_decode(token);
-            return token;
-    }).catch((err)=>err.toString());
-  };
+
   export const setAuthToken = (token) => {
     localStorage.setItem(TOKEN_NAME, token);
   };
@@ -28,4 +10,20 @@ export const login = (user_id, password) => {
   // 從 localStorage 讀取 token
   export const getAuthToken = () => {
     return localStorage.getItem(TOKEN_NAME);
+  };
+  export const setAuthSearchName = (search) => {
+    localStorage.setItem(SEARCH_NAME, search);
+  };
+  
+  // 從 localStorage 讀取 token
+  export const getAuthSearchName = () => {
+    return localStorage.getItem(SEARCH_NAME);
+  };
+  export const setCom = (com) => {
+    localStorage.setItem(COM_COM, com);
+  };
+  
+  // 從 localStorage 讀取 token
+  export const getCom = () => {
+    return localStorage.getItem(COM_COM);
   };

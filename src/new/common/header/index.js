@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Div0,Logo, LogoText,Personal,AllData,Exit,Whitediv} from './sty.js'
 import { useNavigate } from "react-router-dom";
 const  Header=()=> {
@@ -12,7 +12,20 @@ const  Header=()=> {
         <Whitediv></Whitediv>
         <Personal onClick={()=>navigate("/search")}>個人</Personal>
         <AllData>全部</AllData>
-        <Exit onClick={()=>navigate("/")}>登出</Exit>
+        <Exit onClick={()=>{
+              fetch('https://web-backend-111406.onrender.com/api/user/logout', {
+                method: "GET",
+                credentials:'include',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                  //   'token': tok, /* 把token放在這 */
+                })
+              }
+              )
+              .then(function(response) {
+                navigate("/")
+              })
+      }}>登出</Exit>
       </Div0>
     );
 }

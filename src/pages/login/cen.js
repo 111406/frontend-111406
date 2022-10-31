@@ -61,11 +61,12 @@ export const Cent = styled.div`
     font_size:50px;
 `;
 export const Cent2 = styled.div`
-    display: flex;
+    display: grid;
     padding-top:13%;
     margin:auto;
     border-radius:10px;
     margin:AUTO;
+    grid-template-rows:1fr,1fr;
     justify-content: center;
     font_size:50px;
 `;
@@ -113,4 +114,11 @@ export const DivLogin = styled.input`
     background-color:#7c9c99;
     color:white;
 
+`
+export const DivError=styled.div`
+  font-size:12px;
+  padding-left:210px;
+  height:12px;
+  display: flex;
+  color:red;
 `
