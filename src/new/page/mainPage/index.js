@@ -7,7 +7,6 @@ import DataDrawList from "../../common/dataDrawList/index";
 // import DataDrawListTrainD from "../../common/dataDrawListTrainD";
 // import DataDrawListTrainS from "../../common/dataDrawListTrainS";
 import Header from "../../common/header";
-import Chart from 'chart.js/auto';
 class PersonalPage  extends Component {
     render(){
     
