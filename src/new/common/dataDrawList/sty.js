@@ -112,6 +112,7 @@ export const Div1 =styled.div`
 export const Table0=styled.table`
     margin-top:0%;
     font-size:10px;
+    width:100%;
 `
 export const Thead0=styled.thead`
     border-bottom:2px solid #8E8E8E;

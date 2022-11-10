@@ -3,7 +3,7 @@ import 'typeface-quicksand';
 export const Div0 = styled.div`
     width: 100%;
     margin: 0 auto;
-    height:100vh;
+    height:100%;
     overflow: auto;
     min-width: 1250px;
     max-width: 1920px;

@@ -1,7 +1,7 @@
 import React,{useState } from "react";
 // import './style.css'
-import{HeaderWrapper}from'./style';
-import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
+import{HeaderWrapper,Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./style';
+// import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
 import { useNavigate } from "react-router-dom";
 // import {getAuthToken } from "../../new/common/apiUtil";
 // import { Token } from "../../new/common/token";

@@ -11,7 +11,6 @@ const  Header=()=> {
         <LogoText>管理系統</LogoText>
         <Whitediv></Whitediv>
         <Personal onClick={()=>navigate("/search")}>個人</Personal>
-        <AllData>全部</AllData>
         <Exit onClick={()=>{
               fetch('https://web-backend-111406.onrender.com/api/user/logout', {
                 method: "GET",
