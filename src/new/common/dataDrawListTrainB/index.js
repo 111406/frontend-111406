@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getAuthSearchName } from "../apiUtil";
 var com=[];
 var userNameSearch="";
+
+
 const hc={'left':"左","right":"右",undefined:""}
 const pn={0:"二頭肌",1:"三頭肌",2:"股四頭肌"}
 
@@ -40,10 +42,10 @@ return myJson.data;
       for(var k =0;k<5;k++){
         if(a[i].user_todos[j].actual_times[0].hand){
           if(a[i].user_todos[j].actual_times[0].times===0){
-            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"失敗","h":hc[a[i].user_todos[j].actual_times[k].hand]})
+            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"未完成","h":hc[a[i].user_todos[j].actual_times[k].hand]})
           }
           else{
-            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"成功","h":hc[a[i].user_todos[j].actual_times[k].hand]})
+            com.push({"time":a[i].user_todos[j].target_date,"part":pn[a[i].user_todos[j].actual_times[k].part],"complete":"完成","h":hc[a[i].user_todos[j].actual_times[k].hand]})
           }
       }
       }

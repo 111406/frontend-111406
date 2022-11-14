@@ -2,6 +2,8 @@
 
 import React,{Component} from "react";
 import { Line } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
+
 import {Div0,DataDrawItem,Table0,Thead0,Th0} from'./sty';
 import { getAuthSearchName } from "../apiUtil";
 import DataDrawListTrainB from "../dataDrawListTrainB";
