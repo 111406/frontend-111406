@@ -25,7 +25,7 @@ const Login1 = () => {
         },
         method:'POST'
       }).then((response)=>{
-          console.log(response);
+          // console.log(response);
           if(response.status===200){
             navigate("/search");
           }

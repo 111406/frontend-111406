@@ -49,7 +49,7 @@ return myJson.data;
       }
   }
     }
-    console.log(com);
+    // console.log(com);
     setData123(com);
   }).catch((err)=>navigate("/"));
       }

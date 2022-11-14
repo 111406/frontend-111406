@@ -28,7 +28,7 @@ class DataInfoList extends Component{
     )
     .then(results=>results.json())
     .then(results=>{this.setState({"data":results.data})
-    console.log(results.data);
+    // console.log(results.data);
     var a="";
     a = results.data.other_detail;
     // console.log("12"+results.data.other_detail);
