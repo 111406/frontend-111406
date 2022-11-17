@@ -27,12 +27,17 @@ export const Personal=styled.button`
         background-color:#4E605E;
     }
 `
-export const AllData=styled.a`
-    font-size:20px;
-    color:white;
-    font-family: 'Noto Sans TC', sans-serif;
-    width: 50px;
-    margin-top: 20px;
+export const AllData=styled.button`
+font-size:20px;
+color:white;
+font-family: 'Noto Sans TC', sans-serif;
+width: 70px;
+margin-top: 20px;
+background-color:transparent;
+border:none;
+&:hover{
+    background-color:#4E605E;
+}
 `
 export const Exit=styled.button`
     font-size:20px;
