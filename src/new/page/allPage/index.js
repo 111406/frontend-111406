@@ -1,5 +1,5 @@
-import React,{Component} from "react";
-import {Div0,ContentDiv} from'./sty';
+import React, { useState, useEffect } from "react";
+import { Div0, ContentDiv } from './sty';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +11,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Header from "../../common/header";
+import axios from 'axios';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,38 +30,59 @@ export const options = {
     title: {
       display: true,
       text: '測試統計圖(次數/年齡)',
+      font: {
+        size: 28
+      }
     },
   },
 };
 
+const AllPage = () => {
+  var [bicepMeans, setBicepMeans] = useState([]);
+  var [quadricepsMeans, setQuadricepsMeans] = useState([]);
 
-class AllPage  extends Component {
-    render(){
-        const labels = ['60~64歲', '65~69歲', '70~74歲', '75~79歲', '80~84歲', '85~89歲', '90~94歲','95~99歲'];
-        var bicepTime = [1, 2, 3, 4, 5, 6, 7,8];//二頭放這
-        var chairTime = [1, 2, 3, 4, 5, 6, 7,8];//下肢次數
-            const data = {
-            labels,
-            datasets: [
-                {
-                label: '二頭肌測試平均次數',
-                data: bicepTime,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',//長條顏色
-                },
-                {
-                label: '座椅深蹲測試平均次數',
-                data: chairTime,
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',//長條顏色
-                },
-            ],
-            };
-        return (
-                <Div0>
-                    <Header></Header>
-                    <ContentDiv>
-                    <Bar options={options} data={data} />
-                    </ContentDiv>
-                </Div0>
-        )}
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      var result = await axios.get(
+        'https://web-backend-111406.onrender.com/api/record/biceps/means',
+        { withCredentials: true },
+      );
+      setBicepMeans(result.data['means']);
+
+      result = await axios.get(
+        'https://web-backend-111406.onrender.com/api/record/quadriceps/means',
+        { withCredentials: true },
+      )
+      setQuadricepsMeans(result.data['means']);
+    };
+
+    fetchData();
+  }, []);
+
+  const labels = ['60~64歲', '65~69歲', '70~74歲', '75~79歲', '80~84歲', '85~89歲', '90~94歲', '95~99歲'];
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: '二頭肌測試平均次數',
+        data: bicepMeans,
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',//長條顏色
+      },
+      {
+        label: '座椅深蹲測試平均次數',
+        data: quadricepsMeans,
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',//長條顏色
+      },
+    ],
+  };
+  return (
+    <Div0>
+      <Header></Header>
+      <ContentDiv>
+        <Bar options={options} data={data} />
+      </ContentDiv>
+    </Div0>
+  )
+}
+
 export default AllPage;
