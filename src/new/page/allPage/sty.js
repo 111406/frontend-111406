@@ -54,11 +54,11 @@ export const Line1 =styled.div`
 `
 
 export const ContentDiv =styled.div`
-    background-color:#F5F5F5;
+    background-color: #FFFFFF;
     overflow:auto;
-    max-width:1000px;
-    max-height:1000px;
-    margin-left:100px;
+    width:1000px;
+    height:1000px;
+    margin: 5% auto;
     
 `
 export const DataInfoChooseDiv =styled.div`
