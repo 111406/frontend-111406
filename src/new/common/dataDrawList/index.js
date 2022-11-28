@@ -13,6 +13,7 @@ var bicepstimes=[];
 let userNameSearch =getAuthSearchName();
 if(!userNameSearch){
     userNameSearch ="/admin";
+import { BACKEND_HOST } from "../../../global";
 }
 var dataB={
     

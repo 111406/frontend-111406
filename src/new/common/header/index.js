@@ -2,6 +2,7 @@ import React from 'react'
 import {Div0,Logo, LogoText,Personal,AllData,Exit,Whitediv} from './sty.js'
 import { useNavigate } from "react-router-dom";
 const  Header=()=> {
+import { BACKEND_HOST } from "../../../global";
   const navigate = useNavigate();
     return (
       <Div0>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuthSearchName } from "../apiUtil";
 var com=[];
 var userNameSearch="";
+import { BACKEND_HOST } from "../../../global";
 
 
 const hc={'left':"左","right":"右",undefined:""}

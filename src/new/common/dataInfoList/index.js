@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import {Div0,DataInfoItem,Div3,DivDetail1,DivDetail2} from'./sty';
 // import Header from '../header/index'
 import { getAuthSearchName} from "../apiUtil";
+import { BACKEND_HOST } from "../../../global";
 // import { Token } from "../token";
 
 var userNameSearch;

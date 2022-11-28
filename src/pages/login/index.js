@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { HeaderWrapper, Div0, Ces, Cent, Cent2, LogoT, InPutL, DivLog, DivLogin, DivError } from './style';
 // import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
 import { useNavigate } from "react-router-dom";
-// import {getAuthToken } from "../../new/common/apiUtil";
-// import { Token } from "../../new/common/token";
+import { BACKEND_HOST } from "../../global";
 const Login1 = () => {
   const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Login1 = () => {
       "user_id": username,
       "password": password
     };
-    fetch("https://web-backend-111406.onrender.com/api/user/login", {
+    fetch(`${BACKEND_HOST}/user/login`, {
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
@@ -33,8 +32,6 @@ const Login1 = () => {
         setErrorMessage('帳號或密碼錯誤')
         setLoading(false);
       }
-
-
     });
   };
   const handleUsername = (e) => {

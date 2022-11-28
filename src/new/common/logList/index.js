@@ -3,6 +3,7 @@ import {Div0,Table0,Thead0,Th0} from'./sty';
 // import Header from '../header/index'
 import { getAuthSearchName} from "../apiUtil";
 // import { Token } from "../token";
+import { BACKEND_HOST } from "../../../global";
 
 var userNameSearch;
 var data;

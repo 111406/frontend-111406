@@ -4,6 +4,7 @@ import Header from '../../common/header/index';
 import { useNavigate } from "react-router-dom";
 import { setAuthSearchName } from "../../common/apiUtil";
 const allUser = [];
+import { BACKEND_HOST } from "../../../global";
 
 const SearchPage = () => {
     // console.log(getAuthToken());
