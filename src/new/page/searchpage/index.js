@@ -44,8 +44,8 @@ const SearchPage = () => {
                     <DivLog>
                         <Selectall onChange={(e) => onChangeInputAge(e.target.value)}>
                             <option key={0} value='undefined'>請選則欲查詢使用者</option>
-                            {userOptions.map((option, index) => (
-                                <option key={index} value={option.user_id}>{option.user_id}</option>
+                            {userOptions.map((option) => (
+                                <option key={option._id.$oid} value={option.user_id}>{option.user_id}</option>
                             ))}
                         </Selectall>
                     </DivLog>

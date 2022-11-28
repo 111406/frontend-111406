@@ -19,7 +19,7 @@ class PersonalPage  extends Component {
                         <Line1>測試/訓練資料</Line1>
                         <DataDrawDiv><DataDrawList></DataDrawList></DataDrawDiv>
                         <Line1>Log資訊</Line1>
-                        <LogList>123345</LogList>
+                        <LogList></LogList>
                     </ContentDiv>
                 </Div0>
         )}
