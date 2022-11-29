@@ -12,6 +12,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import Header from "../../common/header";
 import axios from 'axios';
+import { BACKEND_HOST } from "../../../global";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -44,13 +45,13 @@ const AllPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       var result = await axios.get(
-        'https://web-backend-111406.onrender.com/api/record/biceps/means',
+        `${BACKEND_HOST}/record/biceps/means`,
         { withCredentials: true },
       );
       setBicepMeans(result.data['means']);
 
       result = await axios.get(
-        'https://web-backend-111406.onrender.com/api/record/quadriceps/means',
+        `${BACKEND_HOST}/record/quadriceps/means`,
         { withCredentials: true },
       )
       setQuadricepsMeans(result.data['means']);

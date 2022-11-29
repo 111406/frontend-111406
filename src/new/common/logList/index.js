@@ -1,43 +1,41 @@
-import React,{Component} from "react";
-import {Div0,Table0,Thead0,Th0} from'./sty';
-// import Header from '../header/index'
-import { getAuthSearchName} from "../apiUtil";
-// import { Token } from "../token";
+import React, { Component } from "react";
+import { Div0, Table0, Thead0, Th0 } from './sty';
+import { getAuthSearchName } from "../apiUtil";
+import { BACKEND_HOST } from "../../../global";
 
 var userNameSearch;
-var data;
-class LogList extends Component{
-    
-    constructor(props){
+class LogList extends Component {
+
+    constructor(props) {
         super(props);
-        this.state={
-        "data":[]
-    };
+        this.state = {
+            "data": []
+        };
     }
-    componentDidMount(){
-    this.getItems();
+    componentDidMount() {
+        this.getItems();
     }
-    getItems(){
-    fetch('https://web-backend-111406.onrender.com/api/log?userId='+userNameSearch, {
-                method: "GET",
-                credentials:'include',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    // 'token': getAuthToken(), /* 把token放在這 */
-                })
-}
-    )
-    .then(results=>results.json())
-    .then(results=>{this.setState({"data":results.data})})
-   
+    getItems() {
+        fetch(`${BACKEND_HOST}/log?userId=${userNameSearch}`, {
+            method: "GET",
+            credentials: 'include',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                // 'token': getAuthToken(), /* 把token放在這 */
+            })
+        }
+        )
+            .then(results => results.json())
+            .then(results => { this.setState({ "data": results.data }) })
+
     }
-    render(){
-        userNameSearch=getAuthSearchName();
+    render() {
+        userNameSearch = getAuthSearchName();
         // userNameSearch =window.location.href;
         // userNameSearch=userNameSearch.replace("http://localhost:3000/personal/","")
         return (
-                <Div0>
-                    <Table0 className="table">
+            <Div0>
+                <Table0 className="table">
                     <Thead0>
                         <tr>
                             <Th0 scope="col">時間</Th0>
@@ -45,10 +43,10 @@ class LogList extends Component{
                             <Th0 className="th1" scope="col">URL來源</Th0>
                             <Th0 className="th1" scope="col">訊息</Th0>
                         </tr>
-                </Thead0>
+                    </Thead0>
                     <tbody>
                         {
-                            this.state.data.map((item,index) =>(
+                            this.state.data.map((item, index) => (
                                 <tr key={index}>
                                     <Th0>{item.action_time}</Th0>
                                     <Th0 className="th1">{String(item.ip)}</Th0>
@@ -59,6 +57,8 @@ class LogList extends Component{
                         }
                     </tbody>
                 </Table0>
-                </Div0>
-        )}}
+            </Div0>
+        )
+    }
+}
 export default LogList;
