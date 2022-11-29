@@ -1,7 +1,8 @@
 //訓練個人二頭
 
 import React, { useState } from "react";
-import { Div0, Table0, Thead0, Th0 } from './sty';
+import { Div0 } from './sty';
+import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { useNavigate } from "react-router-dom";
 import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
@@ -58,28 +59,27 @@ const DataDrawListTrainB = () => {
   }
   return (
     <Div0>
-      <Table0 className="table">
-        <Thead0>
+      <CommonTable className="table">
+        <CommonThead>
           <tr>
-            <Th0 scope="col">日期</Th0>
-            <Th0 className="th1" scope="col">部位</Th0>
-            <Th0 className="th1" scope="col">完成</Th0>
+            <CommonTh>日期</CommonTh>
+            <CommonTh>部位</CommonTh>
+            <CommonTh>是否完成</CommonTh>
           </tr>
-        </Thead0>
+        </CommonThead>
         <tbody>
           {
-            data123.map((item, index) => (
+            tableData.map((item, index) => (
 
               <tr key={index}>
-                <Th0>{item.time}</Th0>
-                <Th0 className="th1">{String(item.h) + String(item.part)}</Th0>
-                <Th0 className="th1">{String(item.complete)}</Th0>
-
+                <CommonTd>{item.time}</CommonTd>
+                <CommonTd>{String(item.hand) + String(item.part)}</CommonTd>
+                <CommonTd>{String(item.complete)}</CommonTd>
               </tr>
             ))
           }
         </tbody>
-      </Table0>
+      </CommonTable>
     </Div0>
   );
 }

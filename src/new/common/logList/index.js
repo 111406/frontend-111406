@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Div0, Table0, Thead0, Th0 } from './sty';
+import { Div0 } from './sty';
+import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
 

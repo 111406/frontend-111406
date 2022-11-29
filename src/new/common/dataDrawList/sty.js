@@ -109,20 +109,3 @@ export const Div1 = styled.div`
     padding-top: 20%;
     padding-right: 20px;
 `
-export const Table0=styled.table`
-    margin-top:0%;
-    font-size:10px;
-    width:100%;
-`
-export const Thead0=styled.thead`
-    border-bottom:2px solid #8E8E8E;
-`
-export const Th0=styled.th`
-    width:130px;
-    border-bottom:1px solid #E0E0E0;
-    padding-bottom:9px;
-    padding-top:9px;
-    &.th1{
-        border-left:1px solid #8E8E8E;
-    }
-`
