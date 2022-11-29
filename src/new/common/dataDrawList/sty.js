@@ -53,7 +53,7 @@ export const DataDrawItem = styled.div`
       }
   
   `
-  export const Line1 =styled.div`
+export const Line1 = styled.div`
     border-top:gray 2px solid;
     margin:20px 10px 0 10px;
     font-size:20px;
@@ -61,8 +61,8 @@ export const DataDrawItem = styled.div`
     font-family: 'Noto Sans TC', sans-serif;
   
   `
-  
-  export const ContentDiv =styled.div`
+
+export const ContentDiv = styled.div`
       background-color:#F5F5F5;
       overflow:auto;
       min-height:900px;
@@ -103,7 +103,7 @@ export const DataDrawItem = styled.div`
       }
     
 `
-export const Div1 =styled.div`
+export const Div1 = styled.div`
     font-size:100px;
     font-family: 'Noto Sans TC', sans-serif;
     padding-top: 20%;

@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Div0>
       <Logo>
-        <img src='https://i.imgur.com/BJ21wvu.png' height={56} width={87.5}></img>
+        <img src='https://i.imgur.com/BJ21wvu.png' alt='logo' height={56} width={87.5}></img>
       </Logo>
       <LogoText>管理系統</LogoText>
       <Whitediv></Whitediv>
