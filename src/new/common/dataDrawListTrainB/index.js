@@ -1,62 +1,64 @@
 //訓練個人二頭
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Div0 } from './sty';
 import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { useNavigate } from "react-router-dom";
 import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
-var com = [];
-var userNameSearch = "";
 
 
-const hc = { 'left': "左", "right": "右", undefined: "" }
+const hc = { 'left': "左", "right": "右", "undefined": "" }
 const pn = { 0: "二頭肌", 1: "三頭肌", 2: "股四頭肌" }
 
 const DataDrawListTrainB = () => {
-  const [data123, setData123] = useState([]);
+  const [tableData, setTableData] = useState([]);
   const navigate = useNavigate();
-  userNameSearch = getAuthSearchName();
-  com = []
-  // var userNameSearch =window.location.href;
-  // userNameSearch=userNameSearch.replace("http://localhost:3000/personal","")
-  if (data123.length < 2) {
 
-    fetch(`${BACKEND_HOST}/target/${userNameSearch}`, {
-      method: "GET",
-      credentials: 'include',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        // 'token': getAuthToken(), /* 把token放在這 */
-      })
-    }
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        return myJson.data;
-      })
-      .then(function (a) {
-        for (var i = 0; i < a.length; i++) {
-          for (var j = 0; j < a[i].user_todos.length; j++) {
 
-            for (var k = 0; k < 5; k++) {
-              if (a[i].user_todos[j].actual_times[0].hand) {
-                if (a[i].user_todos[j].actual_times[0].times === 0) {
-                  com.push({ "time": a[i].user_todos[j].target_date, "part": pn[a[i].user_todos[j].actual_times[k].part], "complete": "未完成", "h": hc[a[i].user_todos[j].actual_times[k].hand] })
-                }
-                else {
-                  com.push({ "time": a[i].user_todos[j].target_date, "part": pn[a[i].user_todos[j].actual_times[k].part], "complete": "完成", "h": hc[a[i].user_todos[j].actual_times[k].hand] })
-                }
+  useEffect(() => {
+    const fetchData = async () => {
+      var userNameSearch = getAuthSearchName();
+      if (!userNameSearch) {
+        userNameSearch = "/admin";
+      }
+
+      var result = await axios.get(
+        `${BACKEND_HOST}/target/${userNameSearch}`,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        },
+      ).catch(() => navigate('/', { replace: true }));
+
+      if (result) {
+        let _targets = result.data['data'];
+        var _tableData = [];
+
+        for (var i = 0; i < _targets.length; i++) {
+          for (var j = 0; j < _targets[i].user_todos.length; j++) {
+            const _userTodos = _targets[i].user_todos[j];
+            for (var k = 0; k < _userTodos.actual_times.length; k++) {
+              const _actualTimes = _userTodos.actual_times[k];
+
+              if (_actualTimes.times === 0) {
+                _tableData.push({ "time": _userTodos.target_date, "part": pn[_actualTimes.part], "complete": "未完成", "hand": hc[_actualTimes.hand || 'undefined'] })
+              }
+              else {
+                _tableData.push({ "time": _userTodos.target_date, "part": pn[_actualTimes.part], "complete": "完成", "hand": hc[_actualTimes.hand || 'undefined'] })
               }
             }
           }
         }
-        // console.log(com);
-        setData123(com);
-      }).catch((err) => navigate("/"));
-  }
+        setTableData(_tableData);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <Div0>
       <CommonTable className="table">
