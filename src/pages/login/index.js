@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-// import './style.css'
+import axios from 'axios';
 import { HeaderWrapper, Div0, Ces, Cent, Cent2, LogoT, InPutL, DivLog, DivLogin, DivError } from './style';
-// import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
 import { useNavigate } from "react-router-dom";
 import { BACKEND_HOST } from "../../global";
 const Login1 = () => {
@@ -10,28 +9,25 @@ const Login1 = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const handleLogin = (e) => {
+  const handleLogin = () => {
     setLoading(true)
     const data = {
       "user_id": username,
       "password": password
     };
-    fetch(`${BACKEND_HOST}/user/login`, {
-      credentials: 'include',
-      body: JSON.stringify(data),
+    axios.post(`${BACKEND_HOST}/user/login`, data, {
+      withCredentials: true,
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
     }).then((response) => {
-      // console.log(response);
       if (response.status === 200) {
         navigate("/search");
       }
       else {
         setErrorMessage('帳號或密碼錯誤')
-        setLoading(false);
       }
+      setLoading(false);
     });
   };
   const handleUsername = (e) => {
