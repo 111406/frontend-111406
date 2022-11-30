@@ -14,7 +14,8 @@ import {
     Filler
 } from 'chart.js';
 import { Line } from "react-chartjs-2";
-import { Div0, DataDrawItem, Table0, Thead0, Th0 } from './sty';
+import { Div0, DataDrawItem } from './sty';
+import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { getAuthSearchName } from "../apiUtil";
 import DataDrawListTrainB from "../dataDrawListTrainB";
 import { BACKEND_HOST } from "../../../global";
@@ -52,31 +53,34 @@ const DataDrawList = () => {
                         'Content-Type': 'application/json',
                     }
                 },
-            );         
-            let _records = result.data['data'];
-            setRecords(_records);
+            );
 
-            var _bicepsRecords = [],
-                _quadricepsRecords = [],
-                _chartLabels = [];
-            
-            for (var i = 0; i < _records.length; i++) {
-                switch (_records[i].part) {
-                    case 0:
-                        _bicepsRecords.push(_records[i].times);
-                        let recordCreateTime = new Date(_records[i].create_time);
-                        _chartLabels.push(`${recordCreateTime.getMonth()+1}/${recordCreateTime.getDate()}`);
-                        break;
-                    case 2:
-                        _quadricepsRecords.push(_records[i].times);
-                        break;
-                    default:
-                        break;
+            if (result.status === 200) {
+                let _records = result.data['data'];
+                setRecords(_records);
+
+                var _bicepsRecords = [],
+                    _quadricepsRecords = [],
+                    _chartLabels = [];
+
+                for (var i = 0; i < _records.length; i++) {
+                    switch (_records[i].part) {
+                        case 0:
+                            _bicepsRecords.push(_records[i].times);
+                            let recordCreateTime = new Date(_records[i].create_time);
+                            _chartLabels.push(`${recordCreateTime.getMonth() + 1}/${recordCreateTime.getDate()}`);
+                            break;
+                        case 2:
+                            _quadricepsRecords.push(_records[i].times);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                setBicepsRecords(_bicepsRecords);
+                setQuadricepsRecords(_quadricepsRecords);
+                setChartLabels(_chartLabels);
             }
-            setBicepsRecords(_bicepsRecords);
-            setQuadricepsRecords(_quadricepsRecords);
-            setChartLabels(_chartLabels);
         };
         fetchData();
     }, []);
@@ -102,7 +106,7 @@ const DataDrawList = () => {
             }
         ]
     };
-    
+
     return (
         <Div0>
             <DataDrawItem>
@@ -110,26 +114,26 @@ const DataDrawList = () => {
             </DataDrawItem>
 
             <DataDrawItem>
-                <Table0 className="table">
-                    <Thead0>
+                <CommonTable className="table">
+                    <CommonThead>
                         <tr>
-                            <Th0 scope="col">日期</Th0>
-                            <Th0 className="th1" scope="col">部位</Th0>
-                            <Th0 className="th1" scope="col">次數</Th0>
+                            <CommonTh>日期</CommonTh>
+                            <CommonTh>部位</CommonTh>
+                            <CommonTh>次數</CommonTh>
                         </tr>
-                    </Thead0>
+                    </CommonThead>
                     <tbody>
                         {
                             records.map((item, index) => (
                                 <tr key={index}>
-                                    <Th0>{item.create_time.split(" ")[0]}</Th0>
-                                    <Th0 className="th1">{item.part_name}</Th0>
-                                    <Th0 className="th1">{item.times}</Th0>
+                                    <CommonTd>{item.create_time.split(" ")[0]}</CommonTd>
+                                    <CommonTd>{item.part_name}</CommonTd>
+                                    <CommonTd>{item.times}</CommonTd>
                                 </tr>
                             ))
                         }
                     </tbody>
-                </Table0>
+                </CommonTable>
             </DataDrawItem>
             <DataDrawItem><DataDrawListTrainB></DataDrawListTrainB></DataDrawItem>
         </Div0>

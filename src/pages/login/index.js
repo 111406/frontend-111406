@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-// import './style.css'
+import axios from 'axios';
 import { HeaderWrapper, Div0, Ces, Cent, Cent2, LogoT, InPutL, DivLog, DivLogin, DivError } from './style';
-// import{Div0,Ces,Cent,Cent2,LogoT,InPutL,DivLog,DivLogin,DivError}from'./cen';
 import { useNavigate } from "react-router-dom";
 import { BACKEND_HOST } from "../../global";
 const Login1 = () => {
@@ -10,28 +9,25 @@ const Login1 = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const handleLogin = (e) => {
+  const handleLogin = () => {
     setLoading(true)
     const data = {
       "user_id": username,
       "password": password
     };
-    fetch(`${BACKEND_HOST}/user/login`, {
-      credentials: 'include',
-      body: JSON.stringify(data),
+    axios.post(`${BACKEND_HOST}/user/login`, data, {
+      withCredentials: true,
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
     }).then((response) => {
-      // console.log(response);
       if (response.status === 200) {
         navigate("/search");
       }
       else {
         setErrorMessage('帳號或密碼錯誤')
-        setLoading(false);
       }
+      setLoading(false);
     });
   };
   const handleUsername = (e) => {
@@ -46,20 +42,20 @@ const Login1 = () => {
       <HeaderWrapper> </HeaderWrapper>
       <Ces>
         <Cent2>
-          <img src="https://i.imgur.com/SOaMg6w.png" height={94} width={148}></img>
+          <img src="https://i.imgur.com/SOaMg6w.png" alt="logo" height={94} width={148}></img>
         </Cent2>
         <Cent>
           <LogoT>管理系統</LogoT>
         </Cent>
         <Cent2>
           <DivLog>
-            <img src="https://i.imgur.com/H7a6zp6.jpg" height={30} width={30}></img>
+            <img src="https://i.imgur.com/H7a6zp6.jpg" alt="account-icon" height={30} width={30}></img>
             <InPutL id="email" type="text" placeholder="USERNAME" size="30" value={username} onChange={handleUsername}></InPutL>
           </DivLog>
         </Cent2>
         <Cent>
           <DivLog>
-            <img src="https://i.imgur.com/qlc1u8C.jpg" height={30} width={30}></img>
+            <img src="https://i.imgur.com/qlc1u8C.jpg" alt="pwd-icon" height={30} width={30}></img>
             <InPutL id="passw" type="password" placeholder="PASSWORD" size="30" value={password} onChange={handlePassword}></InPutL>
           </DivLog>
         </Cent>

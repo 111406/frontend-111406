@@ -53,7 +53,7 @@ export const DataDrawItem = styled.div`
       }
   
   `
-  export const Line1 =styled.div`
+export const Line1 = styled.div`
     border-top:gray 2px solid;
     margin:20px 10px 0 10px;
     font-size:20px;
@@ -61,8 +61,8 @@ export const DataDrawItem = styled.div`
     font-family: 'Noto Sans TC', sans-serif;
   
   `
-  
-  export const ContentDiv =styled.div`
+
+export const ContentDiv = styled.div`
       background-color:#F5F5F5;
       overflow:auto;
       min-height:900px;
@@ -103,26 +103,9 @@ export const DataDrawItem = styled.div`
       }
     
 `
-export const Div1 =styled.div`
+export const Div1 = styled.div`
     font-size:100px;
     font-family: 'Noto Sans TC', sans-serif;
     padding-top: 20%;
     padding-right: 20px;
-`
-export const Table0=styled.table`
-    margin-top:0%;
-    font-size:10px;
-    width:100%;
-`
-export const Thead0=styled.thead`
-    border-bottom:2px solid #8E8E8E;
-`
-export const Th0=styled.th`
-    width:130px;
-    border-bottom:1px solid #E0E0E0;
-    padding-bottom:9px;
-    padding-top:9px;
-    &.th1{
-        border-left:1px solid #8E8E8E;
-    }
 `
