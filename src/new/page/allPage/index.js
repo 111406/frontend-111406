@@ -13,6 +13,7 @@ import { Bar } from 'react-chartjs-2';
 import Header from "../../common/header";
 import axios from 'axios';
 import { BACKEND_HOST } from "../../../global";
+import { LoaderDiv, LoaderContent } from "../loader";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -41,6 +42,7 @@ export const options = {
 const AllPage = () => {
   var [bicepMeans, setBicepMeans] = useState([]);
   var [quadricepsMeans, setQuadricepsMeans] = useState([]);
+  var [checkLoding, setCheckLoding] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +57,7 @@ const AllPage = () => {
         { withCredentials: true },
       )
       setQuadricepsMeans(result.data['means']);
+      setCheckLoding(false);
     };
 
     fetchData();
@@ -82,6 +85,9 @@ const AllPage = () => {
       <ContentDiv>
         <Bar options={options} data={data} />
       </ContentDiv>
+      <LoaderDiv checkLoding={checkLoding}>
+        <LoaderContent></LoaderContent>
+      </LoaderDiv>
     </Div0>
   )
 }
