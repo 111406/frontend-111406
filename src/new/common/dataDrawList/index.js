@@ -31,7 +31,7 @@ ChartJS.register(
     Filler
 );
 
-const DataDrawList = () => {
+const DataDrawList = ({loadingFinish}) => {
 
     const [records, setRecords] = useState([]);
     const [bicepsRecords, setBicepsRecords] = useState([]);
@@ -81,6 +81,7 @@ const DataDrawList = () => {
                 setQuadricepsRecords(_quadricepsRecords);
                 setChartLabels(_chartLabels);
             }
+            loadingFinish();
         };
         fetchData();
     }, []);
