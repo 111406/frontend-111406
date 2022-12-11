@@ -51,7 +51,7 @@ export const Div0 = styled.div`
 
 export const ContentDiv =styled.div`
     background-color:#F5F5F5;
-    height:100%;
+    height:92%;
     overflow:auto;
     display: flex;
     justify-content: center; 
