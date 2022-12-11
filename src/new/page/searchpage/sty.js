@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import 'typeface-quicksand';
 export const Div0 = styled.div`
-    width: 100%;
-    margin: 0 auto;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    min-width:1000px;
     height:100%;
+    margin: 0 auto;
     overflow: auto;
-    min-width: 1250px;
-    max-width: 1920px;
+    z-index:4;
     &::-webkit-scrollbar {
 
       width: 7px;
@@ -48,8 +51,8 @@ export const Div0 = styled.div`
 
 export const ContentDiv =styled.div`
     background-color:#F5F5F5;
+    height:100%;
     overflow:auto;
-    min-height:500px;
     display: flex;
     justify-content: center; 
     align-items: center; 
