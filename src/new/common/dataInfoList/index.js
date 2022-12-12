@@ -3,8 +3,10 @@ import axios from 'axios';
 import { Div0, DataInfoItem, Div3, DivDetail1, DivDetail2 } from './sty';
 import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
+import { useNavigate } from "react-router-dom";
 
 const DataInfoList = () => {
+    const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({});
     const [detail, setDetail] = useState({});
 
@@ -23,9 +25,9 @@ const DataInfoList = () => {
                         'Content-Type': 'application/json',
                     }
                 },
-            );
+            ).catch((e) => navigate(`/${e.response.status}`));
 
-            if (result.status === 200) {
+            if (result) {
                 let _userInfo = result.data['data'];
                 setUserInfo(_userInfo);
                 setDetail(_userInfo.other_detail);

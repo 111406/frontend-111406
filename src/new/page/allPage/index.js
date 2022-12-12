@@ -14,6 +14,7 @@ import Header from "../../common/header";
 import axios from 'axios';
 import { BACKEND_HOST } from "../../../global";
 import { LoaderDiv, LoaderContent } from "../loader";
+import { useNavigate } from "react-router-dom";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -43,21 +44,28 @@ const AllPage = () => {
   var [bicepMeans, setBicepMeans] = useState([]);
   var [quadricepsMeans, setQuadricepsMeans] = useState([]);
   var [checkLoding, setCheckLoding] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       var result = await axios.get(
         `${BACKEND_HOST}/record/biceps/means`,
         { withCredentials: true },
-      );
-      setBicepMeans(result.data['means']);
+      ).catch((e) => navigate(`/${e.response.status}`));
+      
+      if (result) {
+        setBicepMeans(result.data['means']);
+      }
 
       result = await axios.get(
         `${BACKEND_HOST}/record/quadriceps/means`,
         { withCredentials: true },
-      )
-      setQuadricepsMeans(result.data['means']);
-      setCheckLoding(false);
+      ).catch((e) => navigate(`/${e.response.status}`));
+
+      if (result) {
+        setQuadricepsMeans(result.data['means']);
+        setCheckLoding(false);
+      }
     };
 
     fetchData();
