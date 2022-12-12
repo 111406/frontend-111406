@@ -15,7 +15,7 @@ export const Logo=styled.div`
     width:100px;
     float:left;
 `;
-export const Personal=styled.button`
+export const HeaderButton=styled.button`
     font-size:20px;
     color:white;
     font-family: 'Noto Sans TC', sans-serif;
@@ -26,18 +26,6 @@ export const Personal=styled.button`
     &:hover{
         background-color:#4E605E;
     }
-`
-export const AllData=styled.button`
-font-size:20px;
-color:white;
-font-family: 'Noto Sans TC', sans-serif;
-width: 70px;
-margin-top: 20px;
-background-color:transparent;
-border:none;
-&:hover{
-    background-color:#4E605E;
-}
 `
 export const Exit=styled.button`
     font-size:20px;

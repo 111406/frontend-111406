@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import { Div0, Logo, LogoText, Personal, AllData, Exit, Whitediv } from './sty.js'
+import { Div0, Logo, LogoText, HeaderButton, Exit, Whitediv } from './sty.js'
 import { useNavigate } from "react-router-dom";
 import { BACKEND_HOST } from "../../../global";
 const Header = () => {
@@ -12,8 +12,8 @@ const Header = () => {
       </Logo>
       <LogoText>管理系統</LogoText>
       <Whitediv></Whitediv>
-      <Personal onClick={() => navigate("/search")}>搜尋</Personal>
-      <AllData onClick={() => navigate("/allpage")}>全部</AllData>
+      <HeaderButton onClick={() => navigate("/search")}>搜尋</HeaderButton>
+      <HeaderButton onClick={() => navigate("/allpage")}>全部</HeaderButton>
       <Exit onClick={() => {
         axios.get(`${BACKEND_HOST}/user/logout`, {
           withCredentials: true,
