@@ -32,7 +32,7 @@ const DataDrawListTrainB = () => {
             'Content-Type': 'application/json',
           }
         },
-      ).catch(() => navigate('/', { replace: true }));
+      ).catch((e) => navigate(`/${e.response.status}`));
 
       if (result) {
         let _targets = result.data['data'];

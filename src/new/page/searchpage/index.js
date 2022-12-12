@@ -21,8 +21,11 @@ const SearchPage = () => {
                         'Content-Type': 'application/json',
                     }
                 },
-            ).catch(() => navigate("/"));
-            setUserOptions(result.data['data']);
+            ).catch((e) => navigate(`/${e.response.status}`));
+
+            if (result) {
+                setUserOptions(result.data['data']);
+            }
         };
 
         fetchData();

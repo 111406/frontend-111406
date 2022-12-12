@@ -4,28 +4,30 @@ import { Div0 } from './sty';
 import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
+import { useNavigate } from "react-router-dom";
 
 const LogList = () => {
     const [logs, setLogs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             var userNameSearch = getAuthSearchName();
             if (!userNameSearch) {
-              userNameSearch = "/admin";
+                userNameSearch = "/admin";
             }
-      
-            var result = await axios.get(
-              `${BACKEND_HOST}/log?userId=${userNameSearch}`,
-              {
-                withCredentials: true,
-                headers: {
-                  'Content-Type': 'application/json',
-                }
-              },
-            );
 
-            if (result.status === 200) {
+            var result = await axios.get(
+                `${BACKEND_HOST}/log?userId=${userNameSearch}`,
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                },
+            ).catch((e) => navigate(`/${e.response.status}`));
+
+            if (result) {
                 setLogs(result.data['data']);
             }
         }

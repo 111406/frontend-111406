@@ -19,6 +19,7 @@ import { CommonTable, CommonThead, CommonTh, CommonTd } from '../tableStyle';
 import { getAuthSearchName } from "../apiUtil";
 import DataDrawListTrainB from "../dataDrawListTrainB";
 import { BACKEND_HOST } from "../../../global";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(
     CategoryScale,
@@ -31,20 +32,29 @@ ChartJS.register(
     Filler
 );
 
-const DataDrawList = ({loadingFinish}) => {
+const DataDrawList = ({ loadingFinish }) => {
 
+    const navigate = useNavigate();
     const [records, setRecords] = useState([]);
     const [bicepsRecords, setBicepsRecords] = useState([]);
     const [quadricepsRecords, setQuadricepsRecords] = useState([]);
     const [chartLabels, setChartLabels] = useState([]);
+    var isChartLoadFinish = false;
+    var isTableLoadFinish = false;
 
     useEffect(() => {
-        const fetchData = async () => {
-            var userNameSearch = getAuthSearchName();
-            if (!userNameSearch) {
-                userNameSearch = "/admin";
-            }
+        var userNameSearch = getAuthSearchName();
+        if (!userNameSearch) {
+            userNameSearch = "/admin";
+        }
 
+        const checkLoad = () => {
+            if (isChartLoadFinish && isTableLoadFinish) {
+                loadingFinish();
+            }
+        }
+
+        const getRecords = async () => {
             var result = await axios.get(
                 `${BACKEND_HOST}/record/${userNameSearch}`,
                 {
@@ -53,11 +63,28 @@ const DataDrawList = ({loadingFinish}) => {
                         'Content-Type': 'application/json',
                     }
                 },
-            );
+            ).catch((e) => navigate(`/${e.response.status}`));
 
-            if (result.status === 200) {
-                let _records = result.data['data'];
-                setRecords(_records);
+            if (result) {
+                setRecords(result.data['data']);
+                isTableLoadFinish = true;
+                checkLoad();
+            }
+        };
+
+        const getChartData = async () => {
+            var result = await axios.get(
+                `${BACKEND_HOST}/record/chart/${userNameSearch}`,
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                },
+            ).catch((e) => navigate(`/${e.response.status}`));
+
+            if (result) {
+                var _records = result.data['data'];
 
                 var _bicepsRecords = [],
                     _quadricepsRecords = [],
@@ -80,10 +107,12 @@ const DataDrawList = ({loadingFinish}) => {
                 setBicepsRecords(_bicepsRecords);
                 setQuadricepsRecords(_quadricepsRecords);
                 setChartLabels(_chartLabels);
+                isChartLoadFinish = true;
+                checkLoad(isChartLoadFinish);
             }
-            loadingFinish();
-        };
-        fetchData();
+        }
+        getRecords();
+        getChartData();
     }, []);
 
     const chartData = {
