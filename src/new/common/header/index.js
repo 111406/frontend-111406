@@ -14,6 +14,7 @@ const Header = () => {
       <Whitediv></Whitediv>
       <HeaderButton onClick={() => navigate("/search")}>搜尋</HeaderButton>
       <HeaderButton onClick={() => navigate("/allpage")}>全部</HeaderButton>
+      <HeaderButton onClick={() => navigate("/update")}>更新</HeaderButton>
       <Exit onClick={() => {
         axios.get(`${BACKEND_HOST}/user/logout`, {
           withCredentials: true,

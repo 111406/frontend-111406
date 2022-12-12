@@ -6,7 +6,7 @@ export const Div0 = styled.div`
     height:8%;
     background-color:#445553;
     display: grid;
-    grid-template-columns:100px 100px 8fr 1fr 1fr 1fr;
+    grid-template-columns:100px 100px 8fr 1fr 1fr 1fr 1fr;
 
 `
 export const Logo=styled.div`
