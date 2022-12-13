@@ -128,7 +128,7 @@ const UpdateText = styled.span`
 `
 
 const UpdateUnitText = styled(UpdateText)`
-    font-size: 24px;
+    font-size: 20px;
     float: right;
 `
 
@@ -156,7 +156,8 @@ const UpdateSubmit = styled.button`
     background-color: #eb4141;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 20px;
+    font-weight: bold;
     line-height: 1.5;
     border-radius: .25rem;    
 `
