@@ -3,7 +3,7 @@ export const Div0 = styled.div`
     width: 100%;
     min-width:1250px;
     margin: 0 auto;
-    height:8%;
+    height: auto;
     background-color:#445553;
     display: grid;
     grid-template-columns:100px 100px 8fr 1fr 1fr 1fr 1fr;
