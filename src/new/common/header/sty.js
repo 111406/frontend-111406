@@ -3,10 +3,10 @@ export const Div0 = styled.div`
     width: 100%;
     min-width:1250px;
     margin: 0 auto;
-    height:8%;
+    height: auto;
     background-color:#445553;
     display: grid;
-    grid-template-columns:100px 100px 8fr 1fr 1fr 1fr;
+    grid-template-columns:100px 100px 8fr 1fr 1fr 1fr 1fr;
 
 `
 export const Logo=styled.div`
@@ -15,7 +15,7 @@ export const Logo=styled.div`
     width:100px;
     float:left;
 `;
-export const Personal=styled.button`
+export const HeaderButton=styled.button`
     font-size:20px;
     color:white;
     font-family: 'Noto Sans TC', sans-serif;
@@ -26,18 +26,6 @@ export const Personal=styled.button`
     &:hover{
         background-color:#4E605E;
     }
-`
-export const AllData=styled.button`
-font-size:20px;
-color:white;
-font-family: 'Noto Sans TC', sans-serif;
-width: 70px;
-margin-top: 20px;
-background-color:transparent;
-border:none;
-&:hover{
-    background-color:#4E605E;
-}
 `
 export const Exit=styled.button`
     font-size:20px;
