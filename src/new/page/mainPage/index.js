@@ -14,22 +14,24 @@ class PersonalPage extends Component {
         super(props);
         
         this.state = {
-            checkLoding: true
+            checkTestingDataLoading: true,
+            checkLogDataLoading: true
         };
     }
     render() {
-        const loadingFinish = () => this.setState({ checkLoding: false })
+        const testLoadingFinish = () => this.setState({ checkTestingDataLoading: false })
+        const logLoadingFinish = () => this.setState({ checkLogDataLoading: false })
         return (
             <Div0>
                 <Header></Header>
                 <ContentDiv>
                     <DataInfoDiv><DataInfoList></DataInfoList></DataInfoDiv>
                     <Line1>測試/訓練資料</Line1>
-                    <DataDrawDiv><DataDrawList loadingFinish={loadingFinish}></DataDrawList></DataDrawDiv>
+                    <DataDrawDiv><DataDrawList loadingFinish={testLoadingFinish}></DataDrawList></DataDrawDiv>
                     <Line1>Log資訊</Line1>
-                    <LogList></LogList>
+                    <LogList loadingFinish={logLoadingFinish}></LogList>
                 </ContentDiv>
-                <LoaderDiv checkLoding={this.state.checkLoding}>
+                <LoaderDiv checkLoding={this.state.checkTestingDataLoading || this.state.checkLogDataLoading}>
                     <LoaderContent></LoaderContent>
                 </LoaderDiv>
             </Div0>

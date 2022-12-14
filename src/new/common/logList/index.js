@@ -6,7 +6,7 @@ import { getAuthSearchName } from "../apiUtil";
 import { BACKEND_HOST } from "../../../global";
 import { useNavigate } from "react-router-dom";
 
-const LogList = () => {
+const LogList = ({ loadingFinish }) => {
     const [logs, setLogs] = useState([]);
     const navigate = useNavigate();
 
@@ -29,6 +29,7 @@ const LogList = () => {
 
             if (result) {
                 setLogs(result.data['data']);
+                loadingFinish();
             }
         }
 
