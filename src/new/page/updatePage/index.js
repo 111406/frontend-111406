@@ -72,12 +72,29 @@ const UpdatePage = () => {
 
         if (userId && bicepsTimes && bicepsSets && deltoidTimes && deltoidSets && quadricepsTimes && quadricepsSets) {
 
-            let _bicepsTimes = parseInt(bicepsTimes);
-            let _bicepsSets = parseInt(bicepsSets);
-            let _deltoidTimes = parseInt(deltoidTimes);
-            let _deltoidSets = parseInt(deltoidSets);
-            let _quadricepsTimes = parseInt(quadricepsTimes);
-            let _quadricepsSets = parseInt(quadricepsSets);
+            let _bicepsTimes = parseInt(bicepsTimes) || 0;
+            let _bicepsSets = parseInt(bicepsSets) || 0;
+            let _deltoidTimes = parseInt(deltoidTimes) || 0;
+            let _deltoidSets = parseInt(deltoidSets) || 0;
+            let _quadricepsTimes = parseInt(quadricepsTimes) || 0;
+            let _quadricepsSets = parseInt(quadricepsSets) || 0;
+            let errMsg = "";
+            let checkSetsErr = _bicepsSets <= 0 || _deltoidSets <= 0 || _quadricepsSets <= 0;
+            let checkTimesErr = _bicepsTimes <= 0 || _deltoidTimes <= 0 || _quadricepsTimes <= 0;
+
+            if (checkSetsErr) {
+                errMsg += "組數不得<=0\n";
+            }
+            if (checkTimesErr) {
+                errMsg += "次數不得<=0"
+            }
+
+            if (checkSetsErr || checkTimesErr) {
+                alert(errMsg);
+                setIsLoading(false);
+                return;
+            }
+
             var requestData = {
                 "mode": mode,
                 "target_times": [{
@@ -114,7 +131,7 @@ const UpdatePage = () => {
                 window.location.reload();
             }
         } else {
-            alert("尚有資料未完成");
+            alert("尚有資料未完成填寫");
         }
         setIsLoading(false);
     }
@@ -126,7 +143,7 @@ const UpdatePage = () => {
 
             let _userTodos = await getUserTodos(_userId);
             setUserTodos(_userTodos);
-            let targetDates = _userTodos.map(userTodo => userTodo['target_date']);
+            let targetDates = _userTodos.map(userTodo => userTodo['target_date']).sort();
             setDateOptions(targetDates);
         } else {
             setDateOptions([]);
@@ -171,6 +188,12 @@ const UpdatePage = () => {
                     setQuadricepsSets(_targetTimes['set']);
                     break;
             }
+        }
+    }
+
+    const filterTextWithoutNumber = event => {
+        if (!/[0-9]/.test(event.key)) {
+            event.preventDefault();
         }
     }
 
@@ -226,6 +249,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setBicepsTimes(e.target.value)}
                                         value={bicepsTimes}
                                     />
@@ -237,6 +261,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setBicepsSets(e.target.value)}
                                         value={bicepsSets}
                                     />
@@ -251,6 +276,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setDeltoidTimes(e.target.value)}
                                         value={deltoidTimes}
                                     />
@@ -262,6 +288,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setDeltoidSets(e.target.value)}
                                         value={deltoidSets}
                                     />
@@ -276,6 +303,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setQuadricepsTimes(e.target.value)}
                                         value={quadricepsTimes}
                                     />
@@ -287,6 +315,7 @@ const UpdatePage = () => {
                             <UpdateInputGroup>
                                 <UpdateInputDiv>
                                     <UpdateInput
+                                        onKeyPress={filterTextWithoutNumber}
                                         onChange={e => setQuadricepsSets(e.target.value)}
                                         value={quadricepsSets}
                                     />
